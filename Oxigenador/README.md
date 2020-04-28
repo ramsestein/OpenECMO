@@ -1,1 +1,0 @@
- ! [Diagrama test intercambiador gas] (https://gitlab.com/coronavirusmakers/ecmo/-/blob/master/images/gas_exchange_test.png Diagrama test intercambiador gas)

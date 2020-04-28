@@ -1,0 +1,1 @@
+ ! [Diagrama test intercambiador gas](./images/gas_exchange_test.png)
