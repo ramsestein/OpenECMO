@@ -45,6 +45,7 @@ Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación 
 
 ### Bomba peristáltica ###
 * Se necesita lograr un caudal de hasta 6 litros por minuto.
+* Se descarta el uso de una bomba centrífuga porque tendría que ser de grado médico.
 
 ### Tubos ###
 * El tubo interior que aplasta debe tener un diámetro de 7mm externo y 6mm de diámetro interno.
