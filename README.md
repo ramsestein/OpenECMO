@@ -52,6 +52,7 @@ Algunas ideas:
 * Presion:
     * Dendrómetro
     * Webcam + machine learnnig para ver el flujo
+    * Ultrasonidos / Doppler
 * Obstruccion:
     * Oxymetro
 
