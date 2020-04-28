@@ -14,9 +14,12 @@ membrana extracorpórea. ECMO](https://www.aep.es/articulo/71/Monogra%CC%81fico%
 membrana extracorpórea. ECMO")
 
 ## El proyecto ##
-Intentamos construir una ECMO maker que cumpla con parámetros hemodinámicos suficientes para mantener con vida a pacientes muy graves afecados por COVID-19.
+Intentamos construir una ECMO maker que cumpla con parámetros hemodinámicos suficientes para mantener con vida a pacientes muy graves afecados por COVID-19. 
 
-> Para todos los que se acaben de añadir al proyecto les recomedamos la visualización del siguiente **[vídeo](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/zoom_Ramses.mp4?inline=true "Ramsés explica en que consiste un ECMO")** de una videoconferencia en la que el médico Ramsés Marrero explica de que se trata.
+> Recuerda que se trata de emular el comportamiento de un dispositivo comercial pero queremos construir algo low-cost pero con garantías médicas.
+
+> *Nota importante:* Todos los que se acaben de añadir al proyecto les recomedamos la visualización del siguiente **[vídeo](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/zoom_Ramses.mp4?inline=true "Ramsés explica en que consiste un ECMO")** de una videoconferencia en la que el médico Ramsés Marrero explica de que se trata.
+También rogamos encarecidamente que lean toda la información disponible antes de preguntar por los grupos de Telegram cuestiones que ya están resueltas.
 
 Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación del ECMO son:
 * Flujo inicial del ECMO 50 – 80 ml/Kg./min. 
