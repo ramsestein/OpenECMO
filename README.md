@@ -10,7 +10,7 @@ Es una asistencia mecánica circulatoria y respiratoria, capaz de proporcionar s
 ## El proyecto ##
 Intentamos construir una ECMO maker que cumpla con parámetros hemodinámicos suficientes para mantener con vida a pacientes muy graves afecados por COVID-19.
 
-Para todos los que se acaben de añadir al proyecto les recomedamos la visualización del siguiente **[vídeo](https://gitlab.com/coronavirusmakers/ecmo/files/zoom_Ramses.mp4 "Ramsés explica en que consiste un ECMO")** de una videoconferencia en la que el médico Ramsés Marrero explica de que se trata.
+Para todos los que se acaben de añadir al proyecto les recomedamos la visualización del siguiente **[vídeo](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/zoom_Ramses.mp4?inline=true "Ramsés explica en que consiste un ECMO")** de una videoconferencia en la que el médico Ramsés Marrero explica de que se trata.
 
 Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación del ECMO son:
 * Flujo inicial del ECMO 50 – 80 ml/Kg./min. 
