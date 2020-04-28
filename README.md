@@ -2,6 +2,8 @@
 
 *Extra Corporeal Membrane Oxygenation*
 
+*Nota: Este documento esta ira evolucionando a medida que se avance en el proyecto.*
+
 ## ¿Qué es una ECMO? ##
 Es una asistencia mecánica circulatoria y respiratoria, capaz de proporcionar soporte cardiaco y pulmonar, durante un periodo de días o semanas, en la insuficiencia cardiaca o respiratoria refractarias a tratamiento convencional. Es un soporte vital extracorpóreo con oxigenador incorporado. 
 
@@ -38,14 +40,15 @@ Presiones intrasistema:
 ## Requisitos ##
 ### Tubos ###
 * El tubo interior que aplasta debe tener un diámetro de 7mm externo y 6mm de diámetro interno.
-* Usar tubos de sistemas de suero y nuestro objetivo es llegar a mínimo 1 lpm de caudal.
-* Los tubos no tienen pq ser de grado médico, podrían valer tubos de acuario suficientemente blando para poder aplastarse en la bomba peristáltica
+* Usar tubos de sistemas de suerocon un mínimo de 1 lpm de caudal.
+* Los tubos no tienen porque ser de grado médico, podrían valer tubos de acuario suficientemente blando para poder aplastarse en la bomba peristáltica
 
 ### Sensores ###
 * Interesa conocer la presión antes y después del filtro y también al final del recorrido
-*  De nuevo la presión hay que medirla sin “tocar” la sangre.
-* Una idea sería utilizar un sistema similar a un dendrómetro
-* Otra idea que se ha dicho por Telegram es usar una webcam y utilizar machine learnnig para ver el flujo
+* De nuevo la presión hay que medirla de forma indirecta (sin “tocar” la sangre).
+* Ideas:
+ * Dendrómetro
+ * Webcam + machine learnnig para ver el flujo
 
 
 
