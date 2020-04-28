@@ -15,6 +15,7 @@ Este otro enlace también es otro perfecto ejemplo: https://github.com/gniezen/o
 ## Requerimientos funcionales ##
 * Resolución de 0.1 mL
 * Velocidad ajustable
+* Posibilidad de hacer una embolada puntual de x mL
 
 ### Agradable tener ###
 * Indicación de estado
