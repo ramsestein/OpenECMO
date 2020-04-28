@@ -8,7 +8,8 @@ Este otro enlace también es otro perfecto ejemplo: https://github.com/gniezen/o
 ## Hardware ##
 * Arduino o un microprocesador similar
 * Motor paso a paso
-* Jeringa ¿60 ml?
+* Jeringa 50-60 ml
+[Jeringuilla](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/jeringuilla.jpeg "Jeringuilla de 50-60ml")
 
 ## Requerimientos funcionales ##
 * Resolución de 0.1 mL
