@@ -7,7 +7,7 @@
 ## ¿Qué es una ECMO? ##
 Es una asistencia mecánica circulatoria y respiratoria, capaz de proporcionar soporte cardiaco y pulmonar, durante un periodo de días o semanas, en la insuficiencia cardiaca o respiratoria refractarias a tratamiento convencional. Es un soporte vital extracorpóreo con oxigenador incorporado. 
 
-> A diferencia de los sistemas de perfusión o bypass cardio-pulmonar que están diseñados para sustituir de forma completa y breve la función del corazón y pulmón en el quirófano y así facilitar la cirugía, la **ECMO** mantiene la asistencia necesaria para garantizar las funciones vitales durante un periodo de tiempo mayor [1].
+> A diferencia de los sistemas de perfusión o bypass cardio-pulmonar que están diseñados para sustituir de forma completa y breve la función del corazón y pulmón en el quirófano y así facilitar la cirugía, la **ECMO** mantiene la asistencia necesaria para garantizar las funciones vitales durante un periodo de tiempo mayor.
 
 Este artículo de la _Revista Española de Perfusión_ nos parece muy interesante e ilustrativo para todos aquellos que quieran entender el problema y sería casi de lectura obligatoria si realmente quieres ayudar: [Soporte vital extracorpóreo. Oxigenación por
 membrana extracorpórea. ECMO](https://www.aep.es/articulo/71/Monogra%CC%81fico%20ECMO.pdf "Soporte vital extracorpóreo. Oxigenación por
@@ -30,7 +30,7 @@ Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación 
 
 ## Esquema inicial ##
 
-IMAGEN
+(https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/idea.png "Ramsés explica en que consiste un ECMO")
 Presiones intrasistema:
 * P1: presión negativa de succión venosa (valores normales hasta -70 mmHg)
 * P2: presión entre la bomba y el oxigenador (valor máximo de la normalidad entre   250 - 300 mmHg).
