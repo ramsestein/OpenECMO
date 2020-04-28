@@ -42,6 +42,10 @@ Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación 
 * Diferencial de presión (calculado) ∆P (P2 – P3)
 
 ## Requisitos ##
+
+### Bomba peristáltica ###
+* Se necesita lograr un caudal de hasta 6 litros por minuto.
+
 ### Tubos ###
 * El tubo interior que aplasta debe tener un diámetro de 7mm externo y 6mm de diámetro interno.
 * Usar tubos de sistemas de suerocon un mínimo de 1 lpm de caudal.
