@@ -26,6 +26,30 @@ Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación 
 * Restauración de la diuresis (>0,5 ml/Kg. /h.) 
 * Disminuir el ácido láctico en las primeras 4 horas.
 
+## Esquema inicial ##
+
+IMAGEN
+Presiones intrasistema:
+* P1: presión negativa de succión venosa (valores normales hasta -70 mmHg)
+* P2: presión entre la bomba y el oxigenador (valor máximo de la normalidad entre   250 - 300 mmHg).
+* P3: presión entre el oxigenador y la cánula arterial (valor máximo de la normalidad entre 250 – 300 mmHg).
+* Diferencial de presión (calculado) ∆P (P2 – P3)
+
+## Requisitos ##
+### Tubos ###
+* El tubo interior que aplasta debe tener un diámetro de 7mm externo y 6mm de diámetro interno.
+* Usar tubos de sistemas de suero y nuestro objetivo es llegar a mínimo 1 lpm de caudal.
+* Los tubos no tienen pq ser de grado médico, podrían valer tubos de acuario suficientemente blando para poder aplastarse en la bomba peristáltica
+
+### Sensores ###
+* Interesa conocer la presión antes y después del filtro y también al final del recorrido
+*  De nuevo la presión hay que medirla sin “tocar” la sangre.
+* Una idea sería utilizar un sistema similar a un dendrómetro
+* Otra idea que se ha dicho por Telegram es usar una webcam y utilizar machine learnnig para ver el flujo
+
+
+
+
 
 
 
