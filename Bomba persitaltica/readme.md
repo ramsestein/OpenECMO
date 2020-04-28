@@ -3,6 +3,8 @@
 ## Descripción ##
 En este enlace http://biohackacademy.github.io/biofactory/class/8-pumps/ hay un buen punto de partida para la construcción de un perfusor
 
+Este otro modelo es también muy interesante: http://2017.igem.org/Team:Aachen/Hardware
+
 ## Hardware ##
 * Arduino o un microprocesador similar.
 * Motor
