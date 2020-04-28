@@ -30,8 +30,9 @@ Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación 
 
 ## Esquema inicial ##
 
-(https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/idea.png "Ramsés explica en que consiste un ECMO")
-Presiones intrasistema:
+![Idea](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/idea.png "Ramsés explica en que consiste un ECMO")
+
+###Presiones intrasistema:
 * P1: presión negativa de succión venosa (valores normales hasta -70 mmHg)
 * P2: presión entre la bomba y el oxigenador (valor máximo de la normalidad entre   250 - 300 mmHg).
 * P3: presión entre el oxigenador y la cánula arterial (valor máximo de la normalidad entre 250 – 300 mmHg).
