@@ -7,10 +7,14 @@ Es una asistencia mecánica circulatoria y respiratoria, capaz de proporcionar s
 
 > A diferencia de los sistemas de perfusión o bypass cardio-pulmonar que están diseñados para sustituir de forma completa y breve la función del corazón y pulmón en el quirófano y así facilitar la cirugía, la **ECMO** mantiene la asistencia necesaria para garantizar las funciones vitales durante un periodo de tiempo mayor [1].
 
+Este artículo de la _Revista Española de Perfusión_ nos parece muy interesante e ilustrativo para todos aquellos que quieran entender el problema y sería casi de lectura obligatoria si realmente quieres ayudar: [Soporte vital extracorpóreo. Oxigenación por
+membrana extracorpórea. ECMO](https://www.aep.es/articulo/71/Monogra%CC%81fico%20ECMO.pdf "Soporte vital extracorpóreo. Oxigenación por
+membrana extracorpórea. ECMO")
+
 ## El proyecto ##
 Intentamos construir una ECMO maker que cumpla con parámetros hemodinámicos suficientes para mantener con vida a pacientes muy graves afecados por COVID-19.
 
-Para todos los que se acaben de añadir al proyecto les recomedamos la visualización del siguiente **[vídeo](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/zoom_Ramses.mp4?inline=true "Ramsés explica en que consiste un ECMO")** de una videoconferencia en la que el médico Ramsés Marrero explica de que se trata.
+> Para todos los que se acaben de añadir al proyecto les recomedamos la visualización del siguiente **[vídeo](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/zoom_Ramses.mp4?inline=true "Ramsés explica en que consiste un ECMO")** de una videoconferencia en la que el médico Ramsés Marrero explica de que se trata.
 
 Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación del ECMO son:
 * Flujo inicial del ECMO 50 – 80 ml/Kg./min. 
