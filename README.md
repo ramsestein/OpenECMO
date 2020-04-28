@@ -41,9 +41,11 @@ Presiones intrasistema:
 ### Tubos ###
 * El tubo interior que aplasta debe tener un diámetro de 7mm externo y 6mm de diámetro interno.
 * Usar tubos de sistemas de suerocon un mínimo de 1 lpm de caudal.
-* Los tubos no tienen porque ser de grado médico, podrían valer tubos de acuario suficientemente blando para poder aplastarse en la bomba peristáltica
+* Los tubos no tienen porque ser de grado médico, podrían valer tubos de acuario suficientemente blando para poder aplastarse en la bomba peristáltica (* para los prototipos)
 
 ### Sensores ###
+
+Algunas ideas:
 * Interesa conocer la presión antes y después del filtro y también al final del recorrido
 * De nuevo la presión hay que medirla de forma indirecta (sin “tocar” la sangre).
 
