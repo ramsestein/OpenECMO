@@ -10,6 +10,7 @@ Este otro enlace también es otro perfecto ejemplo: https://github.com/gniezen/o
 * Motor paso a paso
 * Jeringa 50-60 ml
 [Jeringuilla](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/jeringuilla.jpeg "Jeringuilla de 50-60ml")
+[Datos y tamaños de las jeringuillas](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/Syringe-Selection-Guide.pdf "Datos de las jeringuillas")
 
 ## Requerimientos funcionales ##
 * Resolución de 0.1 mL
