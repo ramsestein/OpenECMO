@@ -2,7 +2,7 @@
 
 *Extra Corporeal Membrane Oxygenation*
 
-*Nota: Este documento esta ira evolucionando a medida que se avance en el proyecto.*
+> *Nota:* Este documento se actualiza continuamente a medida que evoluciona el proyecto, por favor, revísalo frecuentemente y si crees que falta algo solicita que lo actualicemos.
 
 ## ¿Qué es una ECMO? ##
 Es una asistencia mecánica circulatoria y respiratoria, capaz de proporcionar soporte cardiaco y pulmonar, durante un periodo de días o semanas, en la insuficiencia cardiaca o respiratoria refractarias a tratamiento convencional. Es un soporte vital extracorpóreo con oxigenador incorporado. 
