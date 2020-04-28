@@ -46,10 +46,12 @@ Presiones intrasistema:
 ### Sensores ###
 * Interesa conocer la presión antes y después del filtro y también al final del recorrido
 * De nuevo la presión hay que medirla de forma indirecta (sin “tocar” la sangre).
-* Ideas:
+
+* Presion:
     * Dendrómetro
     * Webcam + machine learnnig para ver el flujo
-
+* Obstruccion:
+    * Oxymetro
 
 
 
