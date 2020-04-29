@@ -22,5 +22,6 @@ Este otro modelo es también muy interesante: http://2017.igem.org/Team:Aachen/H
 * Pantalla LCD I2C 16x2
 
 ## Como testear el bomba persitaltica
-
-
+* Medición de consumo de corriente
+* Encoder
+* Sensor hall 
