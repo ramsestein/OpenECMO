@@ -1,14 +1,32 @@
 # Perfusor #
 
 ## Descripción ##
-En este enlace http://biohackacademy.github.io/biofactory/class/8-pumps/ hay un buen punto de partida para la construcción de un perfusor
+La bomba de perfusion es un dispositivo que dispensa fluido durante un período de tiempo determinado.
+El diseño mecánico se basa en un diseño de actuador lineal juno a una jeringa, controlado por un sistema electronico.
 
-Este otro enlace también es otro perfecto ejemplo: https://github.com/gniezen/openpump
 
+El dispositivo debe ser independiente del resto del sistema ECMO.
+La jeringa se coloca en el perfusor ya purgada.
+
+El sitema mecanico consta de:
+* 
+* 
+* 
+
+El sitema electronico consta de:
+* 2 sensores endstop (inicio+final)
+* Interface usuario (display+botonera)
+* Alarma sonora y visual antes de llegar el final de carrera
+
+La interface de usuario debe permitir:
+* Indicar y modificar la velocidad de perfusion
+* Cargar nueva jeringa (volver al inicio de carrera)
+
+ 
 ## Hardware ##
 * Arduino o un microprocesador similar
 * Motor paso a paso
-* Jeringa 50-60 ml
+* Jeringa 50-60 ml tipo BD Plastic (diametro 26.7 mm)
 [Jeringuilla](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/jeringuilla.jpeg "Jeringuilla de 50-60ml")
 [Datos y tamaños de las jeringuillas](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/Syringe-Selection-Guide.pdf "Datos de las jeringuillas")
 
@@ -24,3 +42,8 @@ Este otro enlace también es otro perfecto ejemplo: https://github.com/gniezen/o
 * Codificador rotatorio
 
 ## Como testear el perfusor
+
+## Enlaces de interes ##
+[1] http://biohackacademy.github.io/biofactory/class/8-pumps/ hay un buen punto de partida para la construcción de un perfusor
+[2] https://github.com/gniezen/openpump
+[3] https://docs.google.com/document/d/1zW16lL-d0ZAO8lZd7ANE9CllARVIuFvh3bQfag9HGlk/mobilebasic#
