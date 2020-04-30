@@ -48,6 +48,6 @@ https://cad.onshape.com/documents/83fc61005005f6cafa1e611e/w/66630729656df7a5a0b
 ## Como testear el perfusor
 
 ## Enlaces de interes ##
-[1] http://biohackacademy.github.io/biofactory/class/8-pumps/ hay un buen punto de partida para la construcción de un perfusor
-[2] https://github.com/gniezen/openpump
-[3] https://docs.google.com/document/d/1zW16lL-d0ZAO8lZd7ANE9CllARVIuFvh3bQfag9HGlk/mobilebasic#
+1. http://biohackacademy.github.io/biofactory/class/8-pumps/
+2. https://github.com/gniezen/openpump
+3. https://docs.google.com/document/d/1zW16lL-d0ZAO8lZd7ANE9CllARVIuFvh3bQfag9HGlk/mobilebasic#
