@@ -8,38 +8,39 @@ El diseño mecánico se basa en un diseño de actuador lineal juno a una jeringa
 El dispositivo debe ser independiente del resto del sistema ECMO.
 La jeringa se coloca en el perfusor ya purgada.
 
-El sitema mecanico consta de:
-* 
-* 
-* 
+El diseño usara una jeringa 50-60 ml tipo BD Plastic (diametro 26.7 mm)
 
-El sitema electronico consta de:
-* 2 sensores endstop (inicio+final)
-* Interface usuario (display+botonera)
-* Alarma sonora y visual antes de llegar el final de carrera
+[Jeringuilla](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/jeringuilla.jpeg "Jeringuilla de 50-60ml")
+[Datos y tamaños de las jeringuillas](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/Syringe-Selection-Guide.pdf "Datos de las jeringuillas")
 
 La interface de usuario debe permitir:
 * Indicar y modificar la velocidad de perfusion
 * Cargar nueva jeringa (volver al inicio de carrera)
 
- 
-## Hardware ##
-* Arduino o un microprocesador similar
-* Motor paso a paso
-* Jeringa 50-60 ml tipo BD Plastic (diametro 26.7 mm)
-[Jeringuilla](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/jeringuilla.jpeg "Jeringuilla de 50-60ml")
-[Datos y tamaños de las jeringuillas](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/Syringe-Selection-Guide.pdf "Datos de las jeringuillas")
-
 ## Requerimientos funcionales ##
 * Resolución de 0.1 mL
 * Velocidad ajustable
 * Posibilidad de hacer una embolada puntual de x mL
-
-### Agradable tener ###
 * Indicación de estado
-* Pantalla LCD I2C 16x2
-* Dos botones
+* indicador de alarma cuando este al 95% del final
+
+
+## Hardware ##
+
+El sitema mecanico consta de:
+* Motor paso a paso
+* 
+* 
+
+
+El sitema electronico consta de:
+* Arduino o un microprocesador similar
+* 2 sensores endstop (inicio+final)
+* Alarma sonora y visual (LED rojo) antes de llegar el final de carrera
+* Display (Pantalla LCD I2C 16x2 o OLED)
+* Dos botones (?)
 * Codificador rotatorio
+* LEDs indicadores de estado (Verde: Operativo; Rojo: Alarma)
 
 ## Diseño actual (en desarollo) ##
 
