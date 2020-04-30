@@ -41,6 +41,10 @@ La interface de usuario debe permitir:
 * Dos botones
 * Codificador rotatorio
 
+## Diseño actual (en desarollo) ##
+
+https://cad.onshape.com/documents/83fc61005005f6cafa1e611e/w/66630729656df7a5a0b484c3/e/114f94c28aaf946ab67668a8
+
 ## Como testear el perfusor
 
 ## Enlaces de interes ##
