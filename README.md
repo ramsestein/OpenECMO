@@ -13,6 +13,10 @@ Este artículo de la _Revista Española de Perfusión_ nos parece muy interesant
 membrana extracorpórea. ECMO](https://www.aep.es/articulo/71/Monogra%CC%81fico%20ECMO.pdf "Soporte vital extracorpóreo. Oxigenación por
 membrana extracorpórea. ECMO")
 
+## ¿Por qué un ECMO?
+Además de la falta de respiradores hay otra crisis que inicialmente se pasó por alto: 
+https://www.infobae.com/america/the-new-york-times/2020/04/19/coronavirus-ademas-de-la-falta-de-respiradores-hay-otra-crisis-que-se-paso-por-alto/
+
 ## El proyecto ##
 Intentamos construir una ECMO maker que cumpla con parámetros hemodinámicos suficientes para mantener con vida a pacientes muy graves afecados por COVID-19. 
 
