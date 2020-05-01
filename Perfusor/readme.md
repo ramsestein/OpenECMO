@@ -20,6 +20,7 @@ La interface de usuario debe permitir:
 ## Requerimientos funcionales ##
 * Tenemos que lograr un control entre 0.1ml/h - 1200ml/h para una jeringuilla de 50ml (valores calculados)
 * Resolución de 0.1 mL
+* Dosis tipica es de 2-15ml/h
 * Velocidad ajustable
 * Posibilidad de hacer una embolada puntual de x mL
 * Indicación de estado
