@@ -77,6 +77,8 @@ Algunas ideas:
     * Utilización de un oxímetro
     * Medida de la corriente del motor o uso de sensores hall para determinar si la velocidad de giro es la prefijada.
 
+### Perfusor ###
+Es un elemento adicional (independiente) que permite la infusión de heparina para evitar la coagulación de la sangre.
 
 ## Colaboración ##
 
