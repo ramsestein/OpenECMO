@@ -36,12 +36,12 @@ El sitema mecanico consta de:
 
 
 El sitema electronico consta de:
-* Arduino o un microprocesador similar
-* 2 sensores endstop (inicio+final)
-* Alarma sonora y visual (LED rojo) antes de llegar el final de carrera
-* Display (Pantalla LCD I2C 16x2 o OLED)
+* Arduino o un microprocesador similar mejor un Mega
+* 2 sensores endstop (inicio+final) mejor ópticos o hall para evitar problemas mecánicos
+* Alarma sonora (zumbador) y visual (LED rojo) antes de llegar el final de carrera
+* Display (Pantalla LCD I2C 16x2, 20x4 u OLED)
 * Dos botones (?)
-* Codificador rotatorio
+* Codificador rotatorio (encoder para selección de opciones)
 * LEDs indicadores de estado (Verde: Operativo; Rojo: Alarma)
 
 ## Diseño actual (en desarollo) ##
