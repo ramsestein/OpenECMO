@@ -1,21 +1,22 @@
 # Perfusor #
 
 ## Descripción ##
-La bomba de perfusion es un dispositivo que dispensa fluido durante un período de tiempo determinado.
-El diseño mecánico se basa en un diseño de actuador lineal juno a una jeringa, controlado por un sistema electronico.
+La bomba de perfusion (o infusión) es un dispositivo que dispensa fluido durante un período de tiempo determinado. 
+
+Info de la wikipedia: https://es.wikipedia.org/wiki/Bomba_de_infusi%C3%B3n
+
+## Proyecto ##
+* El diseño mecánico se basa en un diseño de actuador lineal junto a una jeringa, controlado por un sistema electrónico.
+* El dispositivo debe ser independiente del resto del sistema ECMO.
+* La jeringa se coloca en el perfusor ya purgada.
 
 
-El dispositivo debe ser independiente del resto del sistema ECMO.
-La jeringa se coloca en el perfusor ya purgada.
-
-El diseño usara una jeringa 50-60 ml tipo BD Plastic (diametro 26.7 mm)
+El diseño usara una jeringa 50-60 ml tipo BD Plastic o similar (diametro 26.7 mm) 
 
 [Jeringuilla](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/jeringuilla.jpeg "Jeringuilla de 50-60ml")
+
 [Datos y tamaños de las jeringuillas](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/files/Syringe-Selection-Guide.pdf "Datos de las jeringuillas")
 
-La interface de usuario debe permitir:
-* Indicar y modificar la velocidad de perfusion
-* Cargar nueva jeringa (volver al inicio de carrera)
 
 ## Requerimientos funcionales ##
 * Tenemos que lograr un control entre 0.1ml/h - 1200ml/h para una jeringuilla de 50ml (valores calculados)
@@ -25,14 +26,15 @@ La interface de usuario debe permitir:
 * Posibilidad de hacer una embolada puntual de x mL
 * Indicación de estado
 * indicador de alarma cuando este al 95% del final
-
+*  La interface de usuario debe permitir:
+    * Indicar y modificar la velocidad de perfusion
+    * Cargar nueva jeringa (volver al inicio de carrera)
 
 ## Hardware ##
 
 El sitema mecanico consta de:
-* Motor paso a paso
-* 
-* 
+* Motor paso a paso 
+* Un sistema de husillo / cremallera.. (por concretar)
 
 
 El sitema electronico consta de:
