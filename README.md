@@ -5,7 +5,7 @@
 > *Nota:* Este documento se actualiza continuamente a medida que evoluciona el proyecto, por favor, revísalo frecuentemente y si crees que falta algo solicita que lo actualicemos.
 
 ## ¿Qué es una ECMO? ##
-Una ECMO o Membrana de Oxigenación Extra Corpórea es una asistencia mecánica circulatoria y respiratoria, capaz de proporcionar soporte cardíaco y pulmonar, durante un periodo de días o semanas, para la insuficiencia cardiaca o respiratoria refractarias a tratamiento convencional. Es en resumen un soporte vital extracorpóreo con oxigenador incorporado. 
+Una **ECMO** o **Membrana de Oxigenación Extra Corpórea** es una asistencia mecánica circulatoria y respiratoria, capaz de proporcionar soporte cardíaco y pulmonar, durante un periodo de días o semanas, para la insuficiencia cardiaca o respiratoria refractarias a tratamiento convencional. Es en resumen un soporte vital extracorpóreo con oxigenador incorporado. 
 
 > A diferencia de los sistemas de perfusión o bypass cardio-pulmonar que están diseñados para sustituir de forma completa y breve la función del corazón y pulmón en el quirófano y así facilitar la cirugía, la **ECMO** mantiene la asistencia necesaria para garantizar las funciones vitales durante un periodo de tiempo mayor.
 
