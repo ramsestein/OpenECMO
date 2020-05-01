@@ -26,6 +26,7 @@ El sitema electronico consta de:
 * Dos botones (?)
 * Codificador rotatorio
 * LEDs indicadores de estado (Verde: Operativo; Rojo: Alarma)
+* Zumbador de alarma
 
 
 ## Diseño actual (en desarollo) ##
