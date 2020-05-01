@@ -73,8 +73,8 @@ Algunas ideas:
 
 ## Colaboración ##
 
-Si crees que puedes ayudar entra en los grupos de Telegram y dirigete al subgrupo en el que creas que puedes aportar más
-
+Si crees que puedes ayudar entra en los grupos de Telegram y dirigete al subgrupo en el que creas que puedes aportar más: 
+https://t.me/joinchat/AEZqrlHdWOAwDOvL7WSOKA
 
 
 
