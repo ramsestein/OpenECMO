@@ -15,11 +15,11 @@ membrana extracorpórea. ECMO")
 
 ## ¿Por qué un ECMO?
 
-** El problema **
+**El problema**
 Además de la falta de respiradores hay otra crisis que inicialmente se pasó por alto: 
 https://www.infobae.com/america/the-new-york-times/2020/04/19/coronavirus-ademas-de-la-falta-de-respiradores-hay-otra-crisis-que-se-paso-por-alto/
 
-** ¿Qué se puede hacer? **
+**¿Qué se puede hacer?**
 Ramsés Marrero convova en el foro A.I.R.E. https://foro.coronavirusmakers.org/index.php?p=/discussion/comment/2749 este proyecto de clase 3.
 
 ## El proyecto ##
