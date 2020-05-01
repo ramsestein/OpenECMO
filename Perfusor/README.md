@@ -35,7 +35,7 @@ El diseño usara una jeringa 50-60 ml tipo BD Plastic o similar (diametro 26.7 m
 El sitema mecanico consta de:
 * Motor paso a paso 
 * Un sistema de husillo / cremallera.. (por concretar)
-
+    * Aquí tenemos un enlace con cálculos al respecto de los husillos: https://docs.google.com/spreadsheets/d/1-_jbQUJL_gpxpd1H1qJIKm36sRTwBJtxHg9JuVWixjs/edit#gid=0    
 
 El sitema electronico consta de:
 * Arduino o un microprocesador similar mejor un Mega
