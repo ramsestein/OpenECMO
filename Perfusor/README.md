@@ -7,7 +7,7 @@ Info de la wikipedia: https://es.wikipedia.org/wiki/Bomba_de_infusi%C3%B3n
 
 ## Proyecto ##
 * El diseño mecánico se basa en un diseño de actuador lineal junto a una jeringa, controlado por un sistema electrónico.
-* El dispositivo debe ser independiente del resto del sistema ECMO.
+* El dispositivo debe ser independiente del resto del sistema [ECMO](https://gitlab.com/coronavirusmakers/ecmo "ECMO").
 * La jeringa se coloca en el perfusor ya purgada.
 
 
