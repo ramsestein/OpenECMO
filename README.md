@@ -77,6 +77,11 @@ Algunas ideas:
     * Utilización de un oxímetro
     * Medida de la corriente del motor o uso de sensores hall para determinar si la velocidad de giro es la prefijada.
 
+### Oxigenador ###
+Es el elemento esencial del EMCO, la membrana que permite la oxigenación de la sangre del paciente. 
+* Opción de usar un modelo comercial.
+* Se están estudiando tamnbién distintas opciones de fabricación 
+
 ### Perfusor ###
 Es un elemento adicional (independiente) que permite la infusión de heparina para evitar la coagulación de la sangre.
 
