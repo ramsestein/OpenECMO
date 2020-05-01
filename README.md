@@ -17,6 +17,8 @@ membrana extracorpórea. ECMO")
 Además de la falta de respiradores hay otra crisis que inicialmente se pasó por alto: 
 https://www.infobae.com/america/the-new-york-times/2020/04/19/coronavirus-ademas-de-la-falta-de-respiradores-hay-otra-crisis-que-se-paso-por-alto/
 
+Ramsés Marrero convova en el foro A.I.R.E. https://foro.coronavirusmakers.org/index.php?p=/discussion/comment/2749 este proyecto de clase 3.
+
 ## El proyecto ##
 Intentamos construir una ECMO maker que cumpla con parámetros hemodinámicos suficientes para mantener con vida a pacientes muy graves afecados por COVID-19. 
 
