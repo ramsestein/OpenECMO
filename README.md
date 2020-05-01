@@ -45,35 +45,42 @@ Los objetivos hemodinámicos que debemos intentar conseguir tras la colocación 
 * P3: presión entre el oxigenador y la cánula arterial (valor máximo de la normalidad entre 250 – 300 mmHg).
 * Diferencial de presión (calculado) ∆P (P2 – P3)
 
-## Requisitos ##
+## Componentes del sistema ##
+
+### Consola ###
+* Es la encargada del control hemodinámico del sistema.
+* Permite regular la velocidad de rotación de la bomba peristáltica (RPM) y el flujo en litros por minuto (LPM)
+* Muestra la información aportada por los sensores hemodinámicos, bioquímicos o de seguridad implantados en el circuito.
 
 ### Bomba peristáltica ###
-* Se necesita lograr un caudal de hasta 6 litros por minuto.
-* Se descarta el uso de una bomba centrífuga porque tendría que ser de grado médico.
+* Se necesita lograr un caudal de hasta 6 Litros por minuto (Lpm).
+* Se descarta el uso de una bomba centrífuga porque tendría que ser de grado médico aunque es la que se usa en sistemas comerciales modernos.
 
 ### Tubos ###
-* El tubo interior que aplasta debe tener un diámetro de 7mm externo y 6mm de diámetro interno.
-* Usar tubos de sistemas de suerocon un mínimo de 1 lpm de caudal.
+* El tubo interior que aplasta debe tener un diámetro de 7mm externo y 6mm de diámetro interno para aprovechar los que hay de forma abundante en los hospitales.
+* Para conseguir suficiente caudal (de hasta 6Lpm) se ha determinado que serán necesarios al menos dos tubos de ese diámetro.
 * Los tubos no tienen porque ser de grado médico, podrían valer tubos de acuario suficientemente blando para poder aplastarse en la bomba peristáltica (* para los prototipos)
 
 ### Sensores ###
 
 Algunas ideas:
 * Interesa conocer la presión antes y después del filtro y también al final del recorrido
-* De nuevo la presión hay que medirla de forma indirecta (sin “tocar” la sangre).
+* De nuevo la presión hay que medirla de forma indirecta (sin “tocar” la sangre) o utilizar sensores desechables.
 
 * Presión:
     * Dendrómetro
     * Webcam + machine learnnig para ver el flujo
     * Ultrasonidos / Doppler
+    * Sensores barométricos / de presión
     
-* Obstruccion:
-    * Oxymetro
+* Para detectar obstruccion:
+    * Utilización de un oxímetro
+    * Medida de la corriente del motor o uso de sensores hall para determinar si la velocidad de giro es la prefijada.
 
 
 ## Colaboración ##
 
-Si crees que puedes ayudar entra en los grupos de Telegram y dirigete al subgrupo en el que creas que puedes aportar más: 
+Si crees que puedes ayudar entra en los grupos de Telegram y dirígete al subgrupo en el que creas que puedes aportar más: 
 https://t.me/joinchat/AEZqrlHdWOAwDOvL7WSOKA
 
 
