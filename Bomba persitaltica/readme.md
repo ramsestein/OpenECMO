@@ -13,23 +13,27 @@ Una bomba peristáltica es un tipo de bomba hidráulica de desplazamiento positi
 
 ## Hardware ##
 
-El sitema mecanico consta de:
+El sitema mecánico consta de:
 * Motor paso a paso
-* Un sistema con rodamientos para hacer la bomba peristáltica
+* Una caja impresa en 3D con rodamientos para hacer la bomba peristáltica 
 * Tubos para diálisis de 6mm de diámetro interior y 7mm de diámetro exterior
 
 
-El sitema electronico consta de:
-* Arduino o un microprocesador similar
-* Display (Pantalla LCD I2C 16x2 o OLED)
-* Dos botones (?)
-* Codificador rotatorio
+El sitema electrónico consta de:
+* Arduino Nano 
+* Driver para el motor
+* Motor paso a paso Nema 23 con eje de 6.35 u 8 mm
+* Display (Pantalla LCD I2C 16x2 u OLED)
+* Codificador rotatorio (encoder)
+* Un botón pera realizar emboladas rápidas. 
+* (Quizá un segundo botón)
 * LEDs indicadores de estado (Verde: Operativo; Rojo: Alarma)
 * Zumbador de alarma
 
 
 ## Diseño actual (en desarollo) ##
-Se han subido los archivos de un diseño 3D para motores nema 23 con ejes de 6,23 y 8mm en la carpeta STL
+Se han subido los archivos de un diseño 3D para motores nema 23 con ejes de 6,23 y 8mm en la carpeta STL que utiliza para probar rodamientos 608zz. 
+Deben utilizarse tubos de 7mm de diámetros exterior y 6mm de diámetro exterior habituales en los hospitales y que se utilizan para diálisis.
 
 ## Como testear el bomba persitaltica
 * Medición de consumo de corriente
