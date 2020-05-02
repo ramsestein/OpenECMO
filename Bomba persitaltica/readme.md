@@ -29,7 +29,7 @@ El sitema electronico consta de:
 
 
 ## Diseño actual (en desarollo) ##
-
+Se han subido los archivos de un diseño 3D para motores nema 23 con ejes de 6,23 y 8mm en la carpeta STL
 
 ## Como testear el bomba persitaltica
 * Medición de consumo de corriente
