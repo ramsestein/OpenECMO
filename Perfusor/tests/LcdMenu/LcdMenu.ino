@@ -1,9 +1,16 @@
-/* Ramsés Perfusor */
-/* Licencia GPLv3*/
+/* Ramsés Perfusor for ECMO*/
+/* Licencia GPLv3 */
 
-#include <LiquidCrystal.h>
+#include <LiquidCrystal_I2C.h>
+
 #include "LcdKeypad.h"
 #include "MenuData.h"
+
+#define outputA 6
+#define outputB 7wqwsssssssssssssssssssss
+
+int aState;
+int aLastState;  
 
 enum AppModeValues
 {
@@ -19,24 +26,25 @@ MenuManager Menu1(sampleMenu_Root, menuCount(sampleMenu_Root));
 char strbuf[LCD_COLS + 1]; // one line of lcd display
 byte btn;
 
-// initialize the library with the numbers of the interface pins
-const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
-// const int rs = 8, en = 9, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
-
-LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
-// LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+// LCD I2C 
+LiquidCrystal_I2C lcd(0x3F, 16, 2);  // Inicia el LCD en la dirección 0x27, con 16 caracteres y 2 líneas
 
 void refreshMenuDisplay (byte refreshMode);
 byte getNavAction();
 
-
 void setup()
 {
   Serial.begin(9600);
-  Serial.println("Ramsés Perfusor");
+  Serial.println("Perfusor activado");
   backLightOn();
-  // set up the LCD's number of columns and rows:
-  lcd.begin(LCD_COLS, LCD_ROWS);
+  lcd.begin();
+  lcd.print("-Perfusor  ECMO-");
+  delay(2000);
+          
+  pinMode (outputA,INPUT);
+  pinMode (outputB,INPUT);
+  
+  aLastState = digitalRead(outputA);
 
   // fall in to menu mode by default.
   appMode = APP_MENU_MODE;
@@ -57,8 +65,10 @@ SIGNAL(TIMER0_COMPA_vect)
 
 void loop()
 { 
-  btn = getButton();
-
+  btn = getButton();  // Buttons
+  
+  aState = digitalRead(outputA); // Encoder
+  Serial.println(appMode);
   switch (appMode)
   {
     case APP_NORMAL_MODE :
@@ -146,6 +156,17 @@ byte getNavAction()
   else if (btn == BUTTON_SELECT_PRESSED || (btn == BUTTON_RIGHT_PRESSED && currentItemHasChildren)) navAction = MENU_ITEM_SELECT;
   //else if (btn == BUTTON_LEFT_PRESSED) navAction = MENU_BACK;
   return navAction;
+
+  if (aState != aLastState) {
+    if (digitalRead(outputB) != aState) {
+      navAction = MENU_ITEM_NEXT;
+      Serial.println("Next");
+    }     
+    else {
+      navAction = MENU_ITEM_PREV;  
+      Serial.println("Prev");
+    }
+  }
 }
 
 
