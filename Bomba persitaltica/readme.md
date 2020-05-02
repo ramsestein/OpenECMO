@@ -9,15 +9,14 @@ Una bomba peristáltica es un tipo de bomba hidráulica de desplazamiento positi
 * Resolución de 1 ml
 * Dirección hacia adelante / hacia atrás
 * Velocidad ajustable
-* 
 
 
 ## Hardware ##
 
 El sitema mecanico consta de:
 * Motor paso a paso
-* Tubo OD 8mm
-* 
+* Un sistema con rodamientos para hacer la bomba peristáltica
+* Tubos para diálisis de 6mm de diámetro interior y 7mm de diámetro exterior
 
 
 El sitema electronico consta de:
