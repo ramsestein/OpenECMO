@@ -13,6 +13,7 @@ Este artículo de la _Revista Española de Perfusión_ nos parece muy interesant
 membrana extracorpórea. ECMO](https://www.aep.es/articulo/71/Monogra%CC%81fico%20ECMO.pdf "Soporte vital extracorpóreo. Oxigenación por
 membrana extracorpórea. ECMO")
 
+El dispositivo que queremos crear es del tipo ECMO V-V (Venoso-Venoso), que plantea menos problemas de presión sanguínea que el V-A (Venoso-Arteria)
 ## ¿Por qué un ECMO?
 
 **El problema**
@@ -77,6 +78,7 @@ Algunas ideas:
     * Webcam + machine learnnig para ver el flujo
     * Ultrasonidos / Doppler
     * Sensores barométricos / de presión
+    * Detectar el desplazamiento de una jeringuilla de baja presión
     
 * Para detectar obstruccion:
     * Utilización de un oxímetro
