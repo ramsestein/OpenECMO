@@ -42,6 +42,11 @@ Deben utilizarse tubos de 7mm de diámetros exterior y 6mm de diámetro exterior
 
 
 ## Enlaces de interes ##
+### Diseños ###
 1. http://biohackacademy.github.io/biofactory/class/8-pumps/
 2. http://2017.igem.org/Team:Aachen/Hardware
+ 
+
+### Calculos ###
+1. https://leadfluid.com/how-to-calculate-the-flow-rate-of-leadfluid-peristaltic-pump/
 
