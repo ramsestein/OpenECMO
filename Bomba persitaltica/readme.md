@@ -1,4 +1,4 @@
-# Bomba Persitaltica #
+# Bomba Peristáltica  #
 
 ## Descripción ##
 Una bomba peristáltica es un tipo de bomba hidráulica de desplazamiento positivo usada para bombear una variedad de fluidos.
