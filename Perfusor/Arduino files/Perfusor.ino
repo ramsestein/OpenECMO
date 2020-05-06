@@ -5,10 +5,8 @@
  * @brief Main sketch in order to test the syringe driver
  * @version 0.1
  * @date 2020-05-03
- * 
- * @copyright Copyright (c) 2020
- * 
- */
+ * @copyrightLicencia GPLv3
+**/
 
 #define LCD_COLS 16
 #define LCD_ROWS 2
