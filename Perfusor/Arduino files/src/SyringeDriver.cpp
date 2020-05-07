@@ -30,12 +30,13 @@ void SyringeDriver::homing()
   Display::setCursor(0, 0);
   Display::print("Homing!");
   Stepper::move(500000);
-  while (!digitalRead(STEPPER_FORWARD_BUTTON_PIN))   // Duda??
+  while (!digitalRead(STEPPER_FORWARD_BUTTON_PIN))
+  {
     Stepper::run();
+  }
   Stepper::stop();
   Stepper::setCurrentPosition(0);
-
-  m_actualState = static_cast<uint8_t>(State::INSERT_SYRINGE);
+  incrementActualState();
 }
 
 uint8_t SyringeDriver::getActualState()
@@ -45,65 +46,98 @@ uint8_t SyringeDriver::getActualState()
 
 void SyringeDriver::incrementActualState()
 {
+  if (m_actualState == static_cast<int>(State::INITIAL))
+  {
+    Display::clear();
+    Display::setCursor(0, 0);
+    Display::print("Nuevo Diametro");
+    Display::setCursor(0, 1);
+    Display::print("Jeringa D:");
+  }
+  else if (m_actualState == static_cast<int>(State::INSERT_SYRINGE))
+  {
+    Display::clear();
+    Display::setCursor(0, 0);
+    Display::print("Seleccione carga ");
+    Display::setCursor(0, 1);
+    Display::print("en mL: ");
+  }
+  else if (m_actualState == static_cast<int>(State::ADJUST_MAX_SPEED))
+  {
+    Display::clear();
+    Display::setCursor(0, 0);
+    Display::print("Seleccione Flow");
+    Display::setCursor(0, 1);
+    Display::print("en mLxH:");
+  }
+  else if (m_actualState == static_cast<int>(State::ADJUST_ACCELERATION))
+  {
+    Display::clear();
+    Display::setCursor(0, 0);
+    Display::print("Aproximando!");
+  }
+  else if (m_actualState == static_cast<int>(State::ADJUSTING))
+  {
+    Display::clear();
+    Display::setCursor(0, 0);
+    Display::print("Ajuste fino");
+  }
   m_actualState++;
 }
-
 void SyringeDriver::updateSyringeDiameter()
 {
-  Display::clear();
-  Display::setCursor(0, 0);
-  Display::print("Coloca la nueva");
-  Display::setCursor(0, 1);
-  Display::print("Jeringa D:");
   Display::setCursor(10, 1);
-  float diameter = analogRead(POTENTIOMETER_PIN);
+  float diameter = map(analogRead(POTENTIOMETER_PIN),0,1024,0,40);
   Display::print(diameter);
   if (digitalRead(ACCEPT_BUTTON_PIN))
   {
+    /*Display::setCursor(10, 1);
+    diameter = analogRead(POTENTIOMETER_PIN);
+    Display::print(diameter);*/
     while (digitalRead(ACCEPT_BUTTON_PIN))
     {
       delay(1);
     }
+    incrementActualState();
   }
   m_diameter = diameter;
 }
 
 void SyringeDriver::updateMaxSpeed()
 {
-  Display::clear();
-  Display::setCursor(0, 0);
-  Display::print("Seleccione ");
-  Display::setCursor(0, 1);
-  Display::print("MaxSpeed: ");
+
   Display::setCursor(10, 1);
-  float maxSpeed = analogRead(POTENTIOMETER_PIN);
+  float maxSpeed = map(analogRead(POTENTIOMETER_PIN),0,1024,0,60);
   Display::print(maxSpeed);
   if (digitalRead(ACCEPT_BUTTON_PIN))
   {
+    /*Display::setCursor(10, 1);
+    maxSpeed = analogRead(POTENTIOMETER_PIN);
+    Display::print(maxSpeed);*/
     while (digitalRead(ACCEPT_BUTTON_PIN))
     {
       delay(1);
     }
+    incrementActualState();
   }
   m_maxSpeed = maxSpeed;
 }
 
 void SyringeDriver::updateAcceleration()
 {
-  Display::clear();
-  Display::setCursor(0, 0);
-  Display::print("Seleccione");
-  Display::setCursor(0, 1);
-  Display::print("Accelerat:");
   Display::setCursor(10, 1);
-  float acceleration = analogRead(POTENTIOMETER_PIN);
+  float acceleration = map(analogRead(POTENTIOMETER_PIN),0,1024,2,15);
   Display::print(acceleration);
   if (digitalRead(ACCEPT_BUTTON_PIN))
   {
+    /*Display::setCursor(10, 1);
+    acceleration = analogRead(POTENTIOMETER_PIN);
+    Display::print(acceleration);*/
     while (digitalRead(ACCEPT_BUTTON_PIN))
     {
       delay(1);
     }
+    incrementActualState();
   }
   m_acceleration = acceleration;
 }
