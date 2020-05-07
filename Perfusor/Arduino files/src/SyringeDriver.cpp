@@ -11,6 +11,7 @@
  */
 
 #include "SyringeDriver.h"
+#include "Arduino.h"
 
 
 SyringeDriver::SyringeDriver(uint8_t t_lcdAddr, uint8_t t_lcdCols, uint8_t t_lcdRows, uint8_t t_interface, uint8_t t_pin1, uint8_t t_pin2, uint8_t t_pin3, uint8_t t_pin4)
@@ -30,7 +31,7 @@ void SyringeDriver::homing()
   Display::setCursor(0, 0);
   Display::print("Homing!");
   Stepper::move(500000);
-  while (!digitalRead(STEPPER_FORWARD_BUTTON_PIN))
+  while (!digitalRead(END_STOP_PIN))
   {
     Stepper::run();
   }
@@ -62,7 +63,7 @@ void SyringeDriver::incrementActualState()
     Display::setCursor(0, 1);
     Display::print("en mL: ");
   }
-  else if (m_actualState == static_cast<int>(State::ADJUST_MAX_SPEED))
+  else if (m_actualState == static_cast<int>(State::ADJUST_LOAD))
   {
     Display::clear();
     Display::setCursor(0, 0);
@@ -70,7 +71,7 @@ void SyringeDriver::incrementActualState()
     Display::setCursor(0, 1);
     Display::print("en mLxH:");
   }
-  else if (m_actualState == static_cast<int>(State::ADJUST_ACCELERATION))
+  else if (m_actualState == static_cast<int>(State::ADJUST_FLOW))
   {
     Display::clear();
     Display::setCursor(0, 0);
@@ -82,18 +83,23 @@ void SyringeDriver::incrementActualState()
     Display::setCursor(0, 0);
     Display::print("Ajuste fino");
   }
+  else if (m_actualState == static_cast<int>(State::FINE_ADJUSTING))
+  {
+    Display::clear();
+    Display::setCursor(0, 0);
+    Display::print("Carga:");
+    Display::setCursor(0, 1);
+    Display::print("Flujo:");
+  }
   m_actualState++;
 }
 void SyringeDriver::updateSyringeDiameter()
 {
   Display::setCursor(10, 1);
-  float diameter = map(analogRead(POTENTIOMETER_PIN),0,1024,0,40);
+  float diameter = map(analogRead(POTENTIOMETER_PIN), 0, 1024, 0, 40);
   Display::print(diameter);
   if (digitalRead(ACCEPT_BUTTON_PIN))
   {
-    /*Display::setCursor(10, 1);
-    diameter = analogRead(POTENTIOMETER_PIN);
-    Display::print(diameter);*/
     while (digitalRead(ACCEPT_BUTTON_PIN))
     {
       delay(1);
@@ -103,82 +109,85 @@ void SyringeDriver::updateSyringeDiameter()
   m_diameter = diameter;
 }
 
-void SyringeDriver::updateMaxSpeed()
+void SyringeDriver::updateLoad()
 {
-
   Display::setCursor(10, 1);
-  float maxSpeed = map(analogRead(POTENTIOMETER_PIN),0,1024,0,60);
-  Display::print(maxSpeed);
+  float load = map(analogRead(POTENTIOMETER_PIN), 0, 1024, 0, 60);
+  Display::print(load);
   if (digitalRead(ACCEPT_BUTTON_PIN))
   {
-    /*Display::setCursor(10, 1);
-    maxSpeed = analogRead(POTENTIOMETER_PIN);
-    Display::print(maxSpeed);*/
     while (digitalRead(ACCEPT_BUTTON_PIN))
     {
       delay(1);
     }
     incrementActualState();
   }
-  m_maxSpeed = maxSpeed;
+  m_load = load;
 }
 
-void SyringeDriver::updateAcceleration()
+void SyringeDriver::updateFlow()
 {
   Display::setCursor(10, 1);
-  float acceleration = map(analogRead(POTENTIOMETER_PIN),0,1024,2,15);
-  Display::print(acceleration);
+  float flow = map(analogRead(POTENTIOMETER_PIN), 0, 1024, 2, 15);
+  Display::print(flow);
   if (digitalRead(ACCEPT_BUTTON_PIN))
   {
-    /*Display::setCursor(10, 1);
-    acceleration = analogRead(POTENTIOMETER_PIN);
-    Display::print(acceleration);*/
     while (digitalRead(ACCEPT_BUTTON_PIN))
     {
       delay(1);
     }
     incrementActualState();
   }
-  m_acceleration = acceleration;
+  m_flow = flow;
 }
 
-float SyringeDriver::getMaxSpeed()
+float SyringeDriver::getLoad()
 {
-  return m_maxSpeed;
+  return m_load;
 }
 
 
-float SyringeDriver::getAcceleration()
+float SyringeDriver::getFlow()
 {
-  return m_acceleration;
+  return m_flow;
 }
 
 uint8_t SyringeDriver::getProgress()
 {
-  /// @todo : Review the method, what is the correct startingPosition/targetPosition? Should we save them into variable members ?
-  int32_t startingPosition = 500000;
-  int32_t targetPosition = -50000;
   int32_t currentPosition = Stepper::currentPosition();
-  uint8_t progress = map(currentPosition, startingPosition, targetPosition, 0, 100);
-  return progress;
+  m_progress = map(currentPosition, 0, m_length, 0, 100);
+  return m_progress;
 }
 
 
 void SyringeDriver::displayDrainningInfo()
 {
-  Display::clear();
   // Progress
-  Display::setCursor(0, 0);
-  Display::print("En Cliclo:");
-  Display::setCursor(11, 0);
-  Display::print(getProgress());
-  Display::setCursor(15, 0);
-  Display::print("%");
+  Display::setCursor(10, 0);
+  Display::print((getProgress() * getLoad() / 100));
+  Display::setCursor(14, 0);
+  Display::print("ml");
   // Speed
-  Display::setCursor(0, 1);
-  Display::print("Velocidad:");
-  Display::setCursor(11, 0);
-  Display::print(static_cast<int>(Stepper::speed()));
-  Display::setCursor(13, 0);
-  Display::print("ml/H");   // Review. The units will overfloat the display (16 rows)
+  Display::setCursor(10, 1);
+  Display::print(getFlow());
+  Display::setCursor(12, 1);
+  Display::print("ml/H");
+}
+
+
+void SyringeDriver::calculateLength()
+{
+  m_length = (m_load * 4000000) / (PI * m_diameter * m_diameter);
+
+  m_targetPosition = m_length - SLIDER_LENGTH;
+}
+
+float SyringeDriver::getLength()
+{
+  return m_length;
+}
+
+float SyringeDriver::getTargetPosition()
+{
+  return m_targetPosition;
 }

@@ -13,16 +13,21 @@
 #ifndef SYRINGE_DRIVER_H
 #define SYRINGE_DRIVER_H
 
+#define SLIDER_LENGTH 72000
+
 #include "Stepper.h"
 #include "Display.h"
 #include "Pinout.h"
 
 /// @todo: Refactor states, add some if needed
 enum class State : uint8_t {
-  HOMING = 0,
+  INITIAL = 0,
   INSERT_SYRINGE = 1,
-  FINE_ADJUSTING = 2,
-  DRAIN_SYRINGE = 3
+  ADJUST_LOAD = 2,
+  ADJUST_FLOW = 3,
+  ADJUSTING = 4,
+  FINE_ADJUSTING = 5,
+  DRAIN_SYRINGE = 6
 };
 
 
@@ -81,27 +86,27 @@ public:
    * @brief Updates the maximum speed of the syringe
    * 
    */
-  void updateMaxSpeed();
+  void updateLoad();
 
   /**
    * @brief Updates the maximum speed of the syringe
    * 
    */
-  void updateAcceleration();
+  void updateFlow();
 
   /**
    * @brief Get the Max Speed object
    * 
    * @return float Max Speed
    */
-  float getMaxSpeed();
+  float getLoad();
 
   /**
    * @brief Get the Acceleration object
    * 
    * @return float Acceleration
    */
-  float getAcceleration();
+  float getFlow();
 
   /**
    * @brief Computes the progress of the syringe drainning
@@ -116,12 +121,34 @@ public:
    */
   void displayDrainningInfo();
 
+  /**
+   * @brief Calcultes the length in steps of the syringe
+   * 
+   */
+  void calculateLength();
+
+  /**
+   * @brief Get the Length object
+   * 
+   * @return float Length
+   */
+  float getLength();
+
+  /**
+   * @brief Get the targetPosition object
+   * 
+   * @return float targetPosition
+   */
+  float getTargetPosition();
 
 private:
-  float m_maxSpeed = 500;       // Maximum speed for the stepper
-  float m_acceleration = 200;   // Acceleration for the stepper
+  float m_load = 0;             // Load of the syringe in ml
+  float m_flow = 0;             // Flow rate in ml/h
   uint8_t m_actualState = 0;    // Actual state of the state machine
   float m_diameter = 0;         // Diameter of the syringe
+  float m_length = 0;           // Length in steps
+  float m_targetPosition = 0;   //
+  float m_progress = 0;         // Percetage of the syringe drained
 };
 
 #endif   // SYRINGE_DRIVER_H
