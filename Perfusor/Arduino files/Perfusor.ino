@@ -16,7 +16,6 @@
 
 #include "src/SyringeDriver.h"
 
-
 SyringeDriver syringeDriver(LCD_I2C_ADDRESS, LCD_COLS, LCD_ROWS);
 
 void setup()
@@ -25,7 +24,6 @@ void setup()
   syringeDriver.homing();
 }
 
-
 void loop()
 {
   uint8_t state = syringeDriver.getActualState();
@@ -33,20 +31,22 @@ void loop()
   {
     syringeDriver.updateSyringeDiameter();
   }
-  else if (state == static_cast<int>(State::ADJUST_MAX_SPEED))
+  else if (state == static_cast<int>(State::ADJUST_LOAD))
   {
-    syringeDriver.updateMaxSpeed();
+    syringeDriver.updateLoad();
   }
-  else if (state == static_cast<int>(State::ADJUST_ACCELERATION))
+  else if (state == static_cast<int>(State::ADJUST_FLOW))
   {
-    syringeDriver.updateAcceleration();
+    syringeDriver.updateFlow();
+    syringeDriver.calculateLength();
   }
   else if (state == static_cast<int>(State::ADJUSTING) && digitalRead(ACCEPT_BUTTON_PIN))
   {
     syringeDriver.setMaxSpeed(500);
     syringeDriver.setAcceleration(200);
-    syringeDriver.moveTo(-23000);
-    while (syringeDriver.currentPosition() != -23000 && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))   // El pin 7 aqui seria un final de carrera
+    float targetPosition = syringeDriver.getTargetPosition();
+    syringeDriver.moveTo(targetPosition);
+    while (syringeDriver.currentPosition() != targetPosition && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))
     {
       syringeDriver.run();
     }
@@ -55,8 +55,8 @@ void loop()
   }
   else if (state == static_cast<int>(State::FINE_ADJUSTING))
   {
-    syringeDriver.setMaxSpeed(100);
-    syringeDriver.setAcceleration(100);
+    syringeDriver.setMaxSpeed(200);
+    syringeDriver.setAcceleration(200);
     if (digitalRead(STEPPER_FORWARD_BUTTON_PIN))
     {
       syringeDriver.move(100);
@@ -82,10 +82,12 @@ void loop()
   }
   else if (state == static_cast<int>(State::DRAIN_SYRINGE) && digitalRead(ACCEPT_BUTTON_PIN))
   {
-    syringeDriver.setMaxSpeed(syringeDriver.getMaxSpeed());
-    syringeDriver.setAcceleration(syringeDriver.getAcceleration());
-    syringeDriver.moveTo(-50000);
-    while (syringeDriver.currentPosition() != -50000 && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))   // Aqui seria un final de carrera
+    /// @todo: Funciones para calcular la velocidad
+    syringeDriver.setCurrentPosition(syringeDriver.getLength());
+    syringeDriver.setMaxSpeed(200);
+    syringeDriver.setAcceleration(200);
+    syringeDriver.moveTo(0);
+    while (syringeDriver.currentPosition() != 0 && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))   // Aqui seria un final de carrera
     {
       syringeDriver.run();
       syringeDriver.displayDrainningInfo();
