@@ -5,8 +5,10 @@
  * @brief Main sketch in order to test the syringe driver
  * @version 0.1
  * @date 2020-05-03
- * @copyrightLicencia GPLv3
-**/
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 
 #define LCD_COLS 16
 #define LCD_ROWS 2
@@ -20,40 +22,39 @@ SyringeDriver syringeDriver(LCD_I2C_ADDRESS, LCD_COLS, LCD_ROWS);
 void setup()
 {
   syringeDriver.initialize();
+  syringeDriver.homing();
 }
 
 
 void loop()
 {
   uint8_t state = syringeDriver.getActualState();
-  if (state == static_cast<int>(State::HOMING))
-  {
-    syringeDriver.homing();
-    syringeDriver.incrementActualState();
-  }
-  else if (state == static_cast<int>(State::INSERT_SYRINGE))
+  if (state == static_cast<int>(State::INSERT_SYRINGE))
   {
     syringeDriver.updateSyringeDiameter();
-    syringeDriver.updateMaxSpeed();
-    syringeDriver.updateAcceleration();
-    syringeDriver.incrementActualState();
   }
-  else if (state == static_cast<int>(State::FINE_ADJUSTING) && digitalRead(ACCEPT_BUTTON_PIN))
+  else if (state == static_cast<int>(State::ADJUST_MAX_SPEED))
   {
-    syringeDriver.clear();
-    syringeDriver.setCursor(0, 0);
-    syringeDriver.print("Aproximando!");
+    syringeDriver.updateMaxSpeed();
+  }
+  else if (state == static_cast<int>(State::ADJUST_ACCELERATION))
+  {
+    syringeDriver.updateAcceleration();
+  }
+  else if (state == static_cast<int>(State::ADJUSTING) && digitalRead(ACCEPT_BUTTON_PIN))
+  {
     syringeDriver.setMaxSpeed(500);
     syringeDriver.setAcceleration(200);
-    syringeDriver.moveTo(-4000);
-    while (syringeDriver.currentPosition() != -4000 && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))   // El pin 7 aqui seria un final de carrera
+    syringeDriver.moveTo(-23000);
+    while (syringeDriver.currentPosition() != -23000 && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))   // El pin 7 aqui seria un final de carrera
     {
       syringeDriver.run();
     }
     syringeDriver.stop();
-    syringeDriver.clear();
-    syringeDriver.setCursor(0, 0);
-    syringeDriver.print("Ajuste fino");
+    syringeDriver.incrementActualState();
+  }
+  else if (state == static_cast<int>(State::FINE_ADJUSTING))
+  {
     syringeDriver.setMaxSpeed(100);
     syringeDriver.setAcceleration(100);
     if (digitalRead(STEPPER_FORWARD_BUTTON_PIN))
