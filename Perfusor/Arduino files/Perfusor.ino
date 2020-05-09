@@ -1,7 +1,7 @@
 /**
  * @file Perfusor.ino
  * @author Limako
- * @author Sergio Gasquez Arcos (sergio.gasquez@gmail.es)
+ * @author Sergio Gasquez Arcos (sergio.gasquez@gmail.com)
  * @brief Main sketch in order to test the syringe driver
  * @version 0.1
  * @date 2020-05-03
@@ -10,13 +10,16 @@
  * 
  */
 
-#define LCD_COLS 16
-#define LCD_ROWS 2
-#define LCD_I2C_ADDRESS 0x27
-
 #include "src/SyringeDriver.h"
 
-SyringeDriver syringeDriver(LCD_I2C_ADDRESS, LCD_COLS, LCD_ROWS);
+#ifdef BYJ
+SyringeDriver syringeDriver(LCD_I2C_ADDRESS, LCD_COLS, LCD_ROWS, AccelStepper::FULL4WIRE, STEPPER_PIN_1, STEPPER_PIN_2, STEPPER_PIN_3, STEPPER_PIN_4);
+#endif   // BYJ
+
+#ifdef NEMA17
+SyringeDriver syringeDriver(LCD_I2C_ADDRESS, LCD_COLS, LCD_ROWS, AccelStepper::DRIVER, STEPPER_STEP_PIN, STEPPER_DIR_PIN);
+#endif   // NEMA17
+
 
 void setup()
 {
@@ -27,36 +30,36 @@ void setup()
 void loop()
 {
   uint8_t state = syringeDriver.getActualState();
-  if (state == static_cast<int>(State::INSERT_SYRINGE))
+  if (state == static_cast<uint8_t>(State::INSERT_SYRINGE))
   {
-    syringeDriver.updateSyringeDiameter();
+    syringeDriver.updateDiameter();
   }
-  else if (state == static_cast<int>(State::ADJUST_LOAD))
+  else if (state == static_cast<uint8_t>(State::UPDATE_LOAD))
   {
     syringeDriver.updateLoad();
   }
-  else if (state == static_cast<int>(State::ADJUST_FLOW))
+  else if (state == static_cast<uint8_t>(State::UPDATE_FLOW))
   {
     syringeDriver.updateFlow();
-    syringeDriver.calculateLength();
+    syringeDriver.updateParameters();
   }
-  else if (state == static_cast<int>(State::ADJUSTING) && digitalRead(ACCEPT_BUTTON_PIN))
+  else if (state == static_cast<uint8_t>(State::ADJUSTING) && digitalRead(ACCEPT_BUTTON_PIN))
   {
-    syringeDriver.setMaxSpeed(500);
-    syringeDriver.setAcceleration(200);
-    float targetPosition = syringeDriver.getTargetPosition();
-    syringeDriver.moveTo(targetPosition);
-    while (syringeDriver.currentPosition() != targetPosition && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))
+    syringeDriver.setMaxSpeed(2 * syringeDriver.getStepsPerMl());   // Speed: 2 mm/s
+    syringeDriver.setAcceleration(2 * syringeDriver.getStepsPerMl());
+    float startingPosition = syringeDriver.getStartingPosition();
+    syringeDriver.moveTo(startingPosition);
+    while (syringeDriver.currentPosition() != startingPosition && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))
     {
       syringeDriver.run();
     }
     syringeDriver.stop();
-    syringeDriver.incrementActualState();
+    syringeDriver.setState(State::FINE_ADJUSTING);
   }
-  else if (state == static_cast<int>(State::FINE_ADJUSTING))
+  else if (state == static_cast<uint8_t>(State::FINE_ADJUSTING))
   {
-    syringeDriver.setMaxSpeed(200);
-    syringeDriver.setAcceleration(200);
+    syringeDriver.setMaxSpeed(syringeDriver.getStepsPerMl());   // Speed: 1 mm/s
+    syringeDriver.setAcceleration(syringeDriver.getStepsPerMl());
     if (digitalRead(STEPPER_FORWARD_BUTTON_PIN))
     {
       syringeDriver.move(100);
@@ -77,15 +80,18 @@ void loop()
       {
         delay(1);
       }
-      syringeDriver.incrementActualState();
+      syringeDriver.setState(State::DRAIN_SYRINGE);
     }
   }
   else if (state == static_cast<int>(State::DRAIN_SYRINGE) && digitalRead(ACCEPT_BUTTON_PIN))
   {
-    /// @todo: Funciones para calcular la velocidad
+    /// @todo: Calculate maxSpeed and acceleration
+    /// @todo: When some button is pressed return to flow selection rate
+    /// @todo: When some button is pressed go into a manual mode where pressing buttons you can drain the syringe at higher speed
+    /// @todo: Check progress constantly to be able to alarm when a threshold is reached
     syringeDriver.setCurrentPosition(syringeDriver.getLength());
-    syringeDriver.setMaxSpeed(200);
-    syringeDriver.setAcceleration(200);
+    syringeDriver.setMaxSpeed(syringeDriver.getMaxSpeed());   // Speed obtained with the flow rate
+    syringeDriver.setAcceleration(syringeDriver.getMaxSpeed());
     syringeDriver.moveTo(0);
     while (syringeDriver.currentPosition() != 0 && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))   // Aqui seria un final de carrera
     {

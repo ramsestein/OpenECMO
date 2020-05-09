@@ -1,7 +1,7 @@
 /**
  * @file Stepper.cpp
  * @author Limako
- * @author Sergio Gasquez Arcos (sergio.gasquez@gmail.es)
+ * @author Sergio Gasquez Arcos (sergio.gasquez@gmail.com)
  * @brief Stepper motor which will control the syringe
  * @version 0.1
  * @date 2020-05-03
