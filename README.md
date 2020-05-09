@@ -1,6 +1,6 @@
 # ECMO
 
-*Extra Corporeal Membrane Oxygenation*
+*Extra Corporeal Membrane Oxygenation* 
 
 > *Nota:* Este documento se actualiza continuamente a medida que evoluciona el proyecto, por favor, revísalo frecuentemente y si crees que falta algo solicita que lo actualicemos.
 
