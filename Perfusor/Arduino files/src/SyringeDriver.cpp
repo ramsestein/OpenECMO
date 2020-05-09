@@ -1,7 +1,7 @@
 /**
  * @file SyringeDriver.cpp
  * @author Limako
- * @author Sergio Gasquez Arcos (sergio.gasquez@gmail.es)
+ * @author Sergio Gasquez Arcos (sergio.gasquez@gmail.com)
  * @brief Class which will control the system
  * @version 0.1
  * @date 2020-05-03
@@ -17,9 +17,15 @@
 SyringeDriver::SyringeDriver(uint8_t t_lcdAddr, uint8_t t_lcdCols, uint8_t t_lcdRows, uint8_t t_interface, uint8_t t_pin1, uint8_t t_pin2, uint8_t t_pin3, uint8_t t_pin4)
   : Stepper(t_interface, t_pin1, t_pin2, t_pin3, t_pin4), Display(t_lcdAddr, t_lcdCols, t_lcdRows)
 {
+  m_stepsPerMl = STEPS_PER_TURN / MOVE_PER_TURN;
+
+#ifdef NEMA17
+  Stepper::setPinsInverted(true, false, true);
+  Stepper::setEnablePin(ENABLE_PIN);
+#endif   // NEMA17
 }
 
-void SyringeDriver::initialize()
+void SyringeDriver::initialize(float t_maxSpeed, float t_acceleration)
 {
   Stepper::initialize();
   Display::initialize();
@@ -27,6 +33,8 @@ void SyringeDriver::initialize()
 
 void SyringeDriver::homing()
 {
+  Stepper::setMaxSpeed(2 * m_stepsPerMl);   // 2 mm/s
+  Stepper::setAcceleration(2 * m_stepsPerMl);
   Display::clear();
   Display::setCursor(0, 0);
   Display::print("Homing!");
@@ -37,7 +45,7 @@ void SyringeDriver::homing()
   }
   Stepper::stop();
   Stepper::setCurrentPosition(0);
-  incrementActualState();
+  setState(State::INSERT_SYRINGE);
 }
 
 uint8_t SyringeDriver::getActualState()
@@ -45,45 +53,45 @@ uint8_t SyringeDriver::getActualState()
   return m_actualState;
 }
 
-void SyringeDriver::incrementActualState()
+void SyringeDriver::setState(State t_state)
 {
-  if (m_actualState == static_cast<int>(State::INITIAL))
+  if (t_state == State::INSERT_SYRINGE)
   {
     Display::clear();
     Display::setCursor(0, 0);
-    Display::print("Nuevo Diametro");
+    Display::print("Escoja Diametro");
     Display::setCursor(0, 1);
-    Display::print("Jeringa D:");
+    Display::print("En mm:");
   }
-  else if (m_actualState == static_cast<int>(State::INSERT_SYRINGE))
+  else if (t_state == State::UPDATE_LOAD)
   {
     Display::clear();
     Display::setCursor(0, 0);
-    Display::print("Seleccione carga ");
+    Display::print("Escoja Carga");
     Display::setCursor(0, 1);
-    Display::print("en mL: ");
+    Display::print("En ml: ");
   }
-  else if (m_actualState == static_cast<int>(State::ADJUST_LOAD))
+  else if (t_state == State::UPDATE_FLOW)
   {
     Display::clear();
     Display::setCursor(0, 0);
-    Display::print("Seleccione Flow");
+    Display::print("Escoja Flujo");
     Display::setCursor(0, 1);
-    Display::print("en mLxH:");
+    Display::print("En ml/h:");
   }
-  else if (m_actualState == static_cast<int>(State::ADJUST_FLOW))
+  else if (t_state == State::ADJUSTING)
   {
     Display::clear();
     Display::setCursor(0, 0);
     Display::print("Aproximando!");
   }
-  else if (m_actualState == static_cast<int>(State::ADJUSTING))
+  else if (t_state == State::FINE_ADJUSTING)
   {
     Display::clear();
     Display::setCursor(0, 0);
     Display::print("Ajuste fino");
   }
-  else if (m_actualState == static_cast<int>(State::FINE_ADJUSTING))
+  else if (t_state == State::DRAIN_SYRINGE)
   {
     Display::clear();
     Display::setCursor(0, 0);
@@ -91,9 +99,13 @@ void SyringeDriver::incrementActualState()
     Display::setCursor(0, 1);
     Display::print("Flujo:");
   }
-  m_actualState++;
+  else
+  {
+  }
+  m_actualState = static_cast<uint8_t>(t_state);
 }
-void SyringeDriver::updateSyringeDiameter()
+
+void SyringeDriver::updateDiameter()
 {
   Display::setCursor(10, 1);
   float diameter = map(analogRead(POTENTIOMETER_PIN), 0, 1024, 0, 40);
@@ -104,7 +116,7 @@ void SyringeDriver::updateSyringeDiameter()
     {
       delay(1);
     }
-    incrementActualState();
+    setState(State::UPDATE_LOAD);
   }
   m_diameter = diameter;
 }
@@ -120,7 +132,7 @@ void SyringeDriver::updateLoad()
     {
       delay(1);
     }
-    incrementActualState();
+    setState(State::UPDATE_FLOW);
   }
   m_load = load;
 }
@@ -128,7 +140,7 @@ void SyringeDriver::updateLoad()
 void SyringeDriver::updateFlow()
 {
   Display::setCursor(10, 1);
-  float flow = map(analogRead(POTENTIOMETER_PIN), 0, 1024, 2, 15);
+  float flow = map(analogRead(POTENTIOMETER_PIN), 0, 1024, 20, 150) / 10.0;
   Display::print(flow);
   if (digitalRead(ACCEPT_BUTTON_PIN))
   {
@@ -136,7 +148,7 @@ void SyringeDriver::updateFlow()
     {
       delay(1);
     }
-    incrementActualState();
+    setState(State::ADJUSTING);
   }
   m_flow = flow;
 }
@@ -145,7 +157,6 @@ float SyringeDriver::getLoad()
 {
   return m_load;
 }
-
 
 float SyringeDriver::getFlow()
 {
@@ -159,27 +170,25 @@ uint8_t SyringeDriver::getProgress()
   return m_progress;
 }
 
-
 void SyringeDriver::displayDrainningInfo()
 {
-  // Progress
-  Display::setCursor(10, 0);
+  // Remaining load
+  Display::setCursor(9, 0);
   Display::print((getProgress() * getLoad() / 100));
   Display::setCursor(14, 0);
   Display::print("ml");
-  // Speed
-  Display::setCursor(10, 1);
+  // Flow rate
+  Display::setCursor(9, 1);
   Display::print(getFlow());
   Display::setCursor(12, 1);
-  Display::print("ml/H");
+  Display::print("ml/h");
 }
 
-
-void SyringeDriver::calculateLength()
+void SyringeDriver::updateParameters()
 {
-  m_length = (m_load * 4000000) / (PI * m_diameter * m_diameter);
-
-  m_targetPosition = m_length - SLIDER_LENGTH;
+  m_length = (m_load * 4000 * m_stepsPerMl) / (PI * m_diameter * m_diameter);
+  m_startingPosition = m_length - SLIDER_LENGTH * m_stepsPerMl;
+  m_maxSpeed = ((m_length / m_load) * m_stepsPerMl * m_flow) / 3600;
 }
 
 float SyringeDriver::getLength()
@@ -187,7 +196,17 @@ float SyringeDriver::getLength()
   return m_length;
 }
 
-float SyringeDriver::getTargetPosition()
+float SyringeDriver::getStartingPosition()
 {
-  return m_targetPosition;
+  return m_startingPosition;
+}
+
+float SyringeDriver::getMaxSpeed()
+{
+  return m_maxSpeed;
+}
+
+float SyringeDriver::getStepsPerMl()
+{
+  return m_stepsPerMl;
 }

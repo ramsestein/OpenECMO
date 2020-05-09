@@ -1,7 +1,7 @@
 /**
  * @file Stepper.h
  * @author Limako
- * @author Sergio Gasquez Arcos (sergio.gasquez@gmail.es)
+ * @author Sergio Gasquez Arcos (sergio.gasquez@gmail.com)
  * @brief Stepper motor which will control the syringe
  * @version 0.1
  * @date 2020-05-03
@@ -35,7 +35,7 @@ public:
    * @param t_maxSpeed Maximum speed 
    * @param t_acceleration Maximum acceleration
    */
-  void initialize(float t_maxSpeed = 500, float t_acceleration = 200);
+  void initialize(float t_maxSpeed = 50, float t_acceleration = 20);
 
 private:
 };
