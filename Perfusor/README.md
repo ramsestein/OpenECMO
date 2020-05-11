@@ -32,25 +32,35 @@ El diseño usara una jeringa 50-60 ml tipo BD Plastic o similar (diametro 26.7 m
 
 ## Hardware ##
 
-El sitema mecanico consta de:
+### Mecánica ###
+
+El sitema mecánico consta de:
+* Piezas impresas en 3D
 * Motor paso a paso 
 * Un sistema de husillo / cremallera.. (por concretar)
-    * Aquí tenemos un enlace con cálculos al respecto de los husillos: https://docs.google.com/spreadsheets/d/1-_jbQUJL_gpxpd1H1qJIKm36sRTwBJtxHg9JuVWixjs/edit#gid=0    
+    * Aquí tenemos un enlace con cálculos al respecto de los husillos: https://docs.google.com/spreadsheets/d/1-_jbQUJL_gpxpd1H1qJIKm36sRTwBJtxHg9JuVWixjs/edit#gid=0   
+* 2 Rodamientos LM8UU
+* 
 
-El sitema electronico consta de:
-* Arduino o un microprocesador similar mejor un Mega
-* 2 sensores endstop (inicio+final) mejor ópticos o hall para evitar problemas mecánicos
-* Alarma sonora (zumbador) y visual (LED rojo) antes de llegar el final de carrera
+### Electrónica ###
+El sitema electrónico consta de:
+* 1 microcontrolador tipo Arduino o un microprocesador similar
+*  Motor diver supported by [AccelStepper](https://www.airspayce.com/mikem/arduino/AccelStepper/index.html)
+* 1 sensor final de carrera o endstop (mejor óptico o hall para evitar problemas de pérdida de pasos pero también pueden ser mecánicos)
 * Display (Pantalla LCD I2C 16x2, 20x4 u OLED)
-* Dos botones (?)
-* Codificador rotatorio (encoder para selección de opciones)
+* Tres botones
+* Codificador rotatorio (encoder para selección de opciones) o un potenciómetro
 * LEDs indicadores de estado (Verde: Operativo; Rojo: Alarma)
+* Alarma sonora (zumbador) 
+
+![Esquema del perfusor](https://gitlab.com/coronavirusmakers/ecmo/-/tree/master/Perfusor/img/perfusor_bb.img "Esquema del perfusor")
+
 
 ## Diseño actual (en desarollo) ##
 
 https://cad.onshape.com/documents/83fc61005005f6cafa1e611e/w/66630729656df7a5a0b484c3/e/114f94c28aaf946ab67668a8
 
-En la carpeta stl hay unos archivos en formato .stl para su impresión en 3D
+En la carpeta stl hay unos archivos en formato .stl para la  impresión en 3D de la estructura del dispositivo.
 
 https://gitlab.com/coronavirusmakers/ecmo/-/tree/master/Perfusor/stl 
 
