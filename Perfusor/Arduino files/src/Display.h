@@ -12,7 +12,7 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#include "lib/NewLiquidCrystal/LiquidCrystal_I2C.h"
+#include "lib/LiquidCrystal_I2C/LiquidCrystal_I2C.h"
 
 class Display : public LiquidCrystal_I2C
 {

@@ -20,7 +20,7 @@ SyringeDriver::SyringeDriver(uint8_t t_lcdAddr, uint8_t t_lcdCols, uint8_t t_lcd
   m_stepsPerMl = STEPS_PER_TURN / MOVE_PER_TURN;
 
 #ifdef NEMA17
-  Stepper::setPinsInverted(true, false, true);
+  Stepper::setPinsInverted(false, false, true);
   Stepper::setEnablePin(ENABLE_PIN);
 #endif   // NEMA17
 }
@@ -33,8 +33,8 @@ void SyringeDriver::initialize(float t_maxSpeed, float t_acceleration)
 
 void SyringeDriver::homing()
 {
-  Stepper::setMaxSpeed(2 * m_stepsPerMl);   // 2 mm/s
-  Stepper::setAcceleration(2 * m_stepsPerMl);
+  Stepper::setMaxSpeed(3 * m_stepsPerMl);   // 3 mm/s
+  Stepper::setAcceleration(3 * m_stepsPerMl);
   Display::clear();
   Display::setCursor(0, 0);
   Display::print("Homing!");
@@ -44,7 +44,7 @@ void SyringeDriver::homing()
     Stepper::run();
   }
   Stepper::stop();
-  Stepper::setCurrentPosition(0);
+  Stepper::setCurrentPosition(SLIDER_LENGTH * m_stepsPerMl);
   setState(State::INSERT_SYRINGE);
 }
 
@@ -93,11 +93,18 @@ void SyringeDriver::setState(State t_state)
   }
   else if (t_state == State::DRAIN_SYRINGE)
   {
+    // Sets the drainning info screen
     Display::clear();
     Display::setCursor(0, 0);
     Display::print("Carga:");
     Display::setCursor(0, 1);
     Display::print("Flujo:");
+    Display::setCursor(14, 0);
+    Display::print("ml");
+    Display::setCursor(8, 1);
+    Display::print(getFlow());
+    Display::setCursor(12, 1);
+    Display::print("ml/h");
   }
   else
   {
@@ -170,25 +177,18 @@ uint8_t SyringeDriver::getProgress()
   return m_progress;
 }
 
-void SyringeDriver::displayDrainningInfo()
+void SyringeDriver::displayDrainingInfo()
 {
   // Remaining load
   Display::setCursor(9, 0);
   Display::print((getProgress() * getLoad() / 100));
-  Display::setCursor(14, 0);
-  Display::print("ml");
-  // Flow rate
-  Display::setCursor(9, 1);
-  Display::print(getFlow());
-  Display::setCursor(12, 1);
-  Display::print("ml/h");
 }
 
 void SyringeDriver::updateParameters()
 {
   m_length = (m_load * 4000 * m_stepsPerMl) / (PI * m_diameter * m_diameter);
-  m_startingPosition = m_length - SLIDER_LENGTH * m_stepsPerMl;
-  m_maxSpeed = ((m_length / m_load) * m_stepsPerMl * m_flow) / 3600;
+  m_startingPosition = m_length;
+  m_maxSpeed = (m_length * (m_flow / m_load)) / 3600;
 }
 
 float SyringeDriver::getLength()

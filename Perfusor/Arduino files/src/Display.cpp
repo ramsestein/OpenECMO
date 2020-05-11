@@ -13,15 +13,14 @@
 #include "Display.h"
 #include "Arduino.h"
 
-Display::Display(uint8_t t_lcdAddr, uint8_t t_lcdCols, uint8_t t_lcdRows) : LiquidCrystal_I2C(t_lcdAddr)
+Display::Display(uint8_t t_lcdAddr, uint8_t t_lcdCols, uint8_t t_lcdRows) : LiquidCrystal_I2C(t_lcdAddr, t_lcdCols, t_lcdRows)
 {
-  LiquidCrystal_I2C::begin(t_lcdCols, t_lcdRows);
 }
 
 
 void Display::initialize()
 {
-  // LiquidCrystal_I2C::init();
+  LiquidCrystal_I2C::init();
   LiquidCrystal_I2C::backlight();
   LiquidCrystal_I2C::setCursor(3, 0);   // Centers the message
   LiquidCrystal_I2C::print("CV19Makers!");

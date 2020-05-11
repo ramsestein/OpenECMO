@@ -123,7 +123,7 @@ public:
    * @brief Displays the draining info (progress and speed)
    * 
    */
-  void displayDrainningInfo();
+  void displayDrainingInfo();
 
   /**
    * @brief Calcultes the length in steps of the syringe
