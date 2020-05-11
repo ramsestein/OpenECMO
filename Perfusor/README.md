@@ -50,6 +50,10 @@ El sitema electronico consta de:
 
 https://cad.onshape.com/documents/83fc61005005f6cafa1e611e/w/66630729656df7a5a0b484c3/e/114f94c28aaf946ab67668a8
 
+En la carpeta stl hay unos archivos en formato .stl para su impresión en 3D
+
+https://gitlab.com/coronavirusmakers/ecmo/-/tree/master/Perfusor/stl 
+
 ## Como testear el perfusor
 
 ## Enlaces de interes ##
