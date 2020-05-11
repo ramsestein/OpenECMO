@@ -12,8 +12,8 @@
 #ifndef STEPPER_H
 #define STEPPER_H
 
-
-#include <AccelStepper.h>
+#include "lib/AccelStepper/AccelStepper.h"
+// #include <AccelStepper.h>
 
 class Stepper : public AccelStepper
 {

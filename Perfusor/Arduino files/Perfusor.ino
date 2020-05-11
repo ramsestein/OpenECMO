@@ -45,8 +45,8 @@ void loop()
   }
   else if (state == static_cast<uint8_t>(State::ADJUSTING) && digitalRead(ACCEPT_BUTTON_PIN))
   {
-    syringeDriver.setMaxSpeed(2 * syringeDriver.getStepsPerMl());   // Speed: 2 mm/s
-    syringeDriver.setAcceleration(2 * syringeDriver.getStepsPerMl());
+    syringeDriver.setMaxSpeed(3 * syringeDriver.getStepsPerMl());   // Speed: 3 mm/s
+    syringeDriver.setAcceleration(3 * syringeDriver.getStepsPerMl());
     float startingPosition = syringeDriver.getStartingPosition();
     syringeDriver.moveTo(startingPosition);
     while (syringeDriver.currentPosition() != startingPosition && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))
@@ -58,16 +58,16 @@ void loop()
   }
   else if (state == static_cast<uint8_t>(State::FINE_ADJUSTING))
   {
-    syringeDriver.setMaxSpeed(syringeDriver.getStepsPerMl());   // Speed: 1 mm/s
-    syringeDriver.setAcceleration(syringeDriver.getStepsPerMl());
+    syringeDriver.setMaxSpeed(1.5 * syringeDriver.getStepsPerMl());   // Speed: 3 mm/s
+    syringeDriver.setAcceleration(1.5 * syringeDriver.getStepsPerMl());
     if (digitalRead(STEPPER_FORWARD_BUTTON_PIN))
     {
-      syringeDriver.move(100);
+      syringeDriver.move(10);
       syringeDriver.run();
     }
     else if (digitalRead(STEPPER_BACKWARD_BUTTON_PIN))
     {
-      syringeDriver.move(-100);
+      syringeDriver.move(-10);
       syringeDriver.run();
     }
     else
@@ -85,7 +85,6 @@ void loop()
   }
   else if (state == static_cast<int>(State::DRAIN_SYRINGE) && digitalRead(ACCEPT_BUTTON_PIN))
   {
-    /// @todo: Calculate maxSpeed and acceleration
     /// @todo: When some button is pressed return to flow selection rate
     /// @todo: When some button is pressed go into a manual mode where pressing buttons you can drain the syringe at higher speed
     /// @todo: Check progress constantly to be able to alarm when a threshold is reached
@@ -96,7 +95,7 @@ void loop()
     while (syringeDriver.currentPosition() != 0 && !digitalRead(STEPPER_BACKWARD_BUTTON_PIN))   // Aqui seria un final de carrera
     {
       syringeDriver.run();
-      syringeDriver.displayDrainningInfo();
+      syringeDriver.displayDrainingInfo();
     }
     syringeDriver.stop();
   }
