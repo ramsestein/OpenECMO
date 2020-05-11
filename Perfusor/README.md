@@ -44,6 +44,8 @@ El sitema mecánico consta de:
 
 ### Electrónica ###
 El sitema electrónico consta de:
+* 1 Fuente de alimentación de 12V
+* 1 Conversor DC-DC
 * 1 microcontrolador tipo Arduino o un microprocesador similar
 *  Motor diver supported by [AccelStepper](https://www.airspayce.com/mikem/arduino/AccelStepper/index.html)
 * 1 sensor final de carrera o endstop (mejor óptico o hall para evitar problemas de pérdida de pasos pero también pueden ser mecánicos)
@@ -53,9 +55,8 @@ El sitema electrónico consta de:
 * LEDs indicadores de estado (Verde: Operativo; Rojo: Alarma)
 * Alarma sonora (zumbador) 
 
-![Esquema del perfusor](https://gitlab.com/coronavirusmakers/ecmo/-/tree/master/Perfusor/img/perfusor_bb.img "Esquema del perfusor")
-
-
+![Esquema del perfusor](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/Perfusor/img/perfusor_bb.png "Esquema del perfusor")
+(Este esquema está incompleto pero sirve como referencia)
 ## Diseño actual (en desarollo) ##
 
 https://cad.onshape.com/documents/83fc61005005f6cafa1e611e/w/66630729656df7a5a0b484c3/e/114f94c28aaf946ab67668a8
