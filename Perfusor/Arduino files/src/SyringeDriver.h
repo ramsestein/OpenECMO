@@ -117,13 +117,13 @@ public:
    * 
    * @return uint8_t Percentage to be fully drained
    */
-  uint8_t getProgress();
+  float getProgress();
 
   /**
    * @brief Displays the draining info (progress and speed)
    * 
    */
-  void displayDrainingInfo();
+  void displayDrainningInfo();
 
   /**
    * @brief Calcultes the length in steps of the syringe
@@ -136,6 +136,10 @@ public:
    * 
    * @return float Length
    */
+   
+   
+  void encoder();
+   
   float getLength();
 
   /**
@@ -159,6 +163,11 @@ public:
    * @return float m_stepsPerMl
    */
   float getStepsPerMl();
+  float getLastPosition();
+  void SyringeDriver::displayAlarmStep();
+  void SyringeDriver::Aprox();
+  void SyringeDriver::FineAdj();
+  void SyringeDriver::Drain();
 
 private:
   uint8_t m_actualState = 0;      // Actual state of the state machine
@@ -170,6 +179,8 @@ private:
   float m_progress = 0;           // Percetage of the syringe drained
   float m_stepsPerMl = 0;         // Steps per milimeter
   float m_maxSpeed = 0;           // Maximum speed in steps per second
+  float m_lastPosition = 0;	      // Stepper position on last interrupt
+  float m_lastProgress = 0;
 };
 
 #endif   // SYRINGE_DRIVER_H
