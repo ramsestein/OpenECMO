@@ -44,7 +44,7 @@ void SyringeDriver::homing()
     Stepper::run();
   }
   Stepper::stop();
-  Stepper::setCurrentPosition(SLIDER_LENGTH * m_stepsPerMl);
+  Stepper::setCurrentPosition(SLIDER_LENGTH*m_stepsPerMl);
   setState(State::INSERT_SYRINGE);
 }
 
@@ -93,18 +93,18 @@ void SyringeDriver::setState(State t_state)
   }
   else if (t_state == State::DRAIN_SYRINGE)
   {
-    // Sets the drainning info screen
     Display::clear();
     Display::setCursor(0, 0);
     Display::print("Carga:");
     Display::setCursor(0, 1);
     Display::print("Flujo:");
-    Display::setCursor(14, 0);
-    Display::print("ml");
-    Display::setCursor(8, 1);
-    Display::print(getFlow());
-    Display::setCursor(12, 1);
-    Display::print("ml/h");
+	Display::setCursor(14, 0);
+	Display::print("ml");
+	// Flow rate
+	Display::setCursor(8, 1);
+	Display::print(getFlow());
+	Display::setCursor(12, 1);
+	Display::print("ml/h");
   }
   else
   {
@@ -131,7 +131,7 @@ void SyringeDriver::updateDiameter()
 void SyringeDriver::updateLoad()
 {
   Display::setCursor(10, 1);
-  float load = map(analogRead(POTENTIOMETER_PIN), 0, 1024, 0, 60);
+  float load = map(analogRead(POTENTIOMETER_PIN), 0, 1024, 0, 600)/10.0;
   Display::print(load);
   if (digitalRead(ACCEPT_BUTTON_PIN))
   {
@@ -160,6 +160,90 @@ void SyringeDriver::updateFlow()
   m_flow = flow;
 }
 
+void SyringeDriver::Aprox()
+{
+    //Stepper::setAcceleration(3 * m_stepsPerMl);
+    Stepper::moveTo(m_length);
+	Stepper::setSpeed(3 * m_stepsPerMl);   // Speed: 3 mm/s
+	while ((Stepper::currentPosition() >= m_length+20 || Stepper::currentPosition() < m_length-20 )&& !digitalRead(ACCEPT_BUTTON_PIN))
+    {
+      Stepper::runSpeedToPosition();
+    }
+    Stepper::stop();
+	while (digitalRead(ACCEPT_BUTTON_PIN))
+      {
+        delay(1);
+      }
+    setState(State::FINE_ADJUSTING);
+}
+
+void SyringeDriver::FineAdj()
+{
+	if (digitalRead(STEPPER_FORWARD_BUTTON_PIN))
+    {
+      Stepper::move(10);
+	  Stepper::setSpeed(3 * m_stepsPerMl);
+      Stepper::runSpeedToPosition();
+    }
+    else if (digitalRead(STEPPER_BACKWARD_BUTTON_PIN))
+    {
+	  Stepper::move(-10);
+	  Stepper::setSpeed(3 * m_stepsPerMl);
+      Stepper::runSpeedToPosition();
+    }
+    else
+    {
+      Stepper::stop();
+    }
+    if (digitalRead(ACCEPT_BUTTON_PIN))
+    {
+      while (digitalRead(ACCEPT_BUTTON_PIN))
+      {
+        delay(1);
+      }
+	  Stepper::setCurrentPosition(m_length);
+	  m_lastPosition= m_length;	  
+      setState(State::DRAIN_SYRINGE);
+    }
+}
+
+void SyringeDriver::Drain()
+{
+	
+    while (digitalRead(ACCEPT_BUTTON_PIN))
+      {
+        delay(1);
+      }
+	  getProgress();
+	displayDrainningInfo();
+    while (Stepper::currentPosition() != 0 && !digitalRead(ACCEPT_BUTTON_PIN))   // Aqui seria un final de carrera
+    {
+	  if (digitalRead(STEPPER_BACKWARD_BUTTON_PIN))
+		{
+		  Stepper::move(-10);
+			Stepper::setSpeed(3 * m_stepsPerMl);
+		}
+		else
+		{
+			Stepper::moveTo(0);
+			Stepper::setSpeed(m_maxSpeed);				
+		}
+		Stepper::runSpeedToPosition();
+      if(m_lastPosition-Stepper::currentPosition()>180)
+        displayAlarmStep();
+	  if(getProgress()<m_lastProgress)
+		displayDrainningInfo();
+		m_lastProgress=m_progress;
+    }
+    Stepper::stop();
+    while (digitalRead(ACCEPT_BUTTON_PIN))
+      {
+        delay(1);
+      }
+    setState(State::INSERT_SYRINGE);
+	
+}
+
 float SyringeDriver::getLoad()
 {
   return m_load;
@@ -170,25 +254,40 @@ float SyringeDriver::getFlow()
   return m_flow;
 }
 
-uint8_t SyringeDriver::getProgress()
+float SyringeDriver::getProgress()
 {
-  int32_t currentPosition = Stepper::currentPosition();
-  m_progress = map(currentPosition, 0, m_length, 0, 100);
+  m_progress = map(Stepper::currentPosition(), 0, m_length, 0, 1000)/10.0;
   return m_progress;
 }
 
-void SyringeDriver::displayDrainingInfo()
+void SyringeDriver::displayDrainningInfo()
 {
   // Remaining load
   Display::setCursor(9, 0);
-  Display::print((getProgress() * getLoad() / 100));
+  Display::print(m_progress * m_load / 100);
+
 }
+
+void SyringeDriver::displayAlarmStep()
+{
+  // Remaining load
+  Display::setCursor(0, 0);
+  Display::print("Alarm Lose Steps");
+
+}
+
 
 void SyringeDriver::updateParameters()
 {
   m_length = (m_load * 4000 * m_stepsPerMl) / (PI * m_diameter * m_diameter);
-  m_startingPosition = m_length;
-  m_maxSpeed = (m_length * (m_flow / m_load)) / 3600;
+  m_startingPosition =  m_length;
+  m_maxSpeed = (m_length *(m_flow/m_load)) / 3600;
+}
+
+void SyringeDriver::encoder()
+{
+	m_lastPosition = Stepper::currentPosition();
+    //displayDrainningInfo();
 }
 
 float SyringeDriver::getLength()
@@ -209,4 +308,9 @@ float SyringeDriver::getMaxSpeed()
 float SyringeDriver::getStepsPerMl()
 {
   return m_stepsPerMl;
+}
+
+float SyringeDriver::getLastPosition()
+{
+  return m_lastPosition;
 }
