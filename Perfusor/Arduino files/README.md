@@ -9,6 +9,7 @@ The goal is to develop **firmware based on arduino for an syringe driver (infusi
 * LCD Display 
 * Potentiometer
 * Syringe support
+* Incremental Encoder(optical+disc)
 
 ## How to use it
 1. Clone the repository
