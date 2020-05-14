@@ -19,13 +19,14 @@
 #define LCD_I2C_ADDRESS 0x27
 
 // Syringe Configuration
-#define SLIDER_LENGTH 82     // Slider length in mm
+#define SLIDER_LENGTH 82      // Slider length in mm
 #define STEPS_PER_TURN 3200   // Number of steps per turn
-#define MOVE_PER_TURN 2      // Advance per turn in mm
+#define MOVE_PER_TURN 2       // Advance per turn in mm
 
 // Choose Driver
 #define NEMA17
 // #define BYJ
+
 
 #ifdef BJY
 #define STEPPER_PIN_1 2
@@ -40,6 +41,7 @@
 #endif   // BJY
 
 #ifdef NEMA17
+#define ENCODER_PIN 3
 #define STEPPER_STEP_PIN 5
 #define STEPPER_DIR_PIN 2
 #define ENABLE_PIN 8
