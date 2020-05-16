@@ -23,7 +23,7 @@ SyringeDriver syringeDriver(LCD_I2C_ADDRESS, LCD_COLS, LCD_ROWS, AccelStepper::D
 
 void setup()
 {
-  attachInterrupt(digitalPinToInterrupt(3), encoder, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(ENCODER_PIN), encoder, CHANGE);
   syringeDriver.initialize();
   syringeDriver.homing();
 }
@@ -46,16 +46,16 @@ void loop()
   }
   else if (state == static_cast<uint8_t>(State::ADJUSTING))
   {
-    syringeDriver.Aprox();
+    syringeDriver.adjust();
   }
   else if (state == static_cast<uint8_t>(State::FINE_ADJUSTING))
   {
-    
-    syringeDriver.FineAdj();
+
+    syringeDriver.fineAdjusting();
   }
   else if (state == static_cast<int>(State::DRAIN_SYRINGE) && digitalRead(ACCEPT_BUTTON_PIN))
   {
-    syringeDriver.Drain();
+    syringeDriver.drain();
   }
   else
   {

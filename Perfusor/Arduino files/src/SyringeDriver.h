@@ -123,7 +123,7 @@ public:
    * @brief Displays the draining info (progress and speed)
    * 
    */
-  void displayDrainningInfo();
+  void displayDrainingInfo();
 
   /**
    * @brief Calcultes the length in steps of the syringe
@@ -132,14 +132,16 @@ public:
   void updateParameters();
 
   /**
-   * @brief Get the Length object
+   * @brief Updates the position via encoder
    * 
-   * @return float Length
    */
-   
-   
   void encoder();
-   
+
+  /**
+   * @brief Get the Length of the syringe 
+   * 
+   * @return float 
+   */
   float getLength();
 
   /**
@@ -163,11 +165,37 @@ public:
    * @return float m_stepsPerMl
    */
   float getStepsPerMl();
+
+  /**
+   * @brief Get the Last Position object
+   * 
+   * @return float m_lastPosition
+   */
   float getLastPosition();
-  void SyringeDriver::displayAlarmStep();
-  void SyringeDriver::Aprox();
-  void SyringeDriver::FineAdj();
-  void SyringeDriver::Drain();
+
+  /**
+   * @brief Shows a message if we lose some steps
+   * 
+   */
+  void displayAlarmStep();
+
+  /**
+   * @brief Aproximates to the starting possition
+   * 
+   */
+  void adjust();
+
+  /**
+   * @brief Lets the user make the fine adjusting
+   * 
+   */
+  void fineAdjusting();
+
+  /**
+   * @brief Carries on the syringe drain 
+   * 
+   */
+  void drain();
 
 private:
   uint8_t m_actualState = 0;      // Actual state of the state machine
@@ -179,8 +207,8 @@ private:
   float m_progress = 0;           // Percetage of the syringe drained
   float m_stepsPerMl = 0;         // Steps per milimeter
   float m_maxSpeed = 0;           // Maximum speed in steps per second
-  float m_lastPosition = 0;	      // Stepper position on last interrupt
-  float m_lastProgress = 0;
+  float m_lastPosition = 0;       // Stepper position on last interrupt
+  float m_lastProgress = 0;       // Last value of the progress
 };
 
 #endif   // SYRINGE_DRIVER_H
