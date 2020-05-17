@@ -26,7 +26,7 @@ Al arrancar la máquina muestra la presentación de bienvenida y las RPM por def
 
 5.	Estado de Alarma (funcionamiento)
 	Durante el funcionamiento la pantalla LCD muestra el estado <ALARM> si re-produce un desajuste de las RPM por causa de un bloqueo del Sistema.
+ 
+![Estado de Alarma](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/Bomba%20peristaltica/img/image001.png "Estado de Alarma")
 
-	![Estado de Alarma](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/Bomba%20peristaltica/img/image001.png "Estado de Alarma")
-	
 6.	Estado de OFF
