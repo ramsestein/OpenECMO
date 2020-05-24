@@ -14,6 +14,9 @@ membrana extracorpórea. ECMO](https://www.aep.es/articulo/71/Monogra%CC%81fico%
 membrana extracorpórea. ECMO")
 
 El dispositivo que queremos crear es del tipo ECMO V-V (Venoso-Venoso), que plantea menos problemas de presión sanguínea que el V-A (Venoso-Arteria)
+
+![ECMO Venoso-Venoso](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/images/VV_ECMO.png "ECMO Venoso-Venoso")
+
 ## ¿Por qué un ECMO?
 
 **El problema**
