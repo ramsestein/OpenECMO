@@ -1,9 +1,12 @@
+/*
+    Author: Francisco Ochando
+    
+    Hid.cpp
+    Contine los métodos de LCD. encoder y botonera
 
+ */
 #include "Peristaltic_pump.h"
 #include "Pump.h"
-
-//#define SW_REV_PULSADO 1
-//#define SW_ENC_PULSADO 2
 
 // Set the LCD address to 0x27 for a 16 chars and 2 line display
 // LiquidCrystal_I2C lcd(0x27,16,2);
@@ -26,19 +29,29 @@ void Hid::Setup() {
 
 void Hid::Init()
 {
- 
-  LCD.setCursor( 0,2 );
+  
+  #if LCD_20x4  
+  LCD.setCursor( 0 , 2 );
   LCD.print(F("RPM: "));
-  LCD.setCursor( 0,3 );
+  LCD.setCursor( 0 , 3 );
   LCD.print(F("VOL: "));
-  LCD.setCursor( 10,3 );
+  LCD.setCursor( 10 , 3 );
   LCD.print( "mL/min");
+  #else   // En caso de LCD 16x2
+  LCD.setCursor( 0 , 0 );
+  LCD.print(F("RPM: "));
+  LCD.setCursor( 0 , 1 );
+  LCD.print(F("Q: "));
+  LCD.setCursor( 10 , 1 );
+  LCD.print( "mL/min");  
+  #endif
 
 }
 
 void Hid::Update( byte value1, byte value2 )
 {
- 
+  
+  #if LCD_20x4  
   LCD.setCursor( 0,2 );
   LCD.print(F("RPM: "));
   LCD.print( value1 );
@@ -46,32 +59,58 @@ void Hid::Update( byte value1, byte value2 )
   LCD.print(F("VOL: "));
   LCD.print( value2 );
   LCD.print( " mL/min");
+  #else   // En caso de LCD 16x2
+  LCD.setCursor( 0,0 );
+  LCD.print(F("RPM: "));
+  LCD.print( value1 );
+  LCD.setCursor( 0,1 );
+  LCD.print(F("Q: "));
+  LCD.print( value2 );
+  LCD.print( " mL/min");  
+  #endif
 
 }
 
 void Hid::PrintRPM( int value1 )
 {
   
+  #if LCD_20x4  
   LCD.setCursor( 5 , 2 );
   LCD.print( value1 );
   LCD.print( "  " );
+  #else   // En caso de LCD 16x2
+  LCD.setCursor( 5 , 0 );
+  LCD.print( value1 );
+  LCD.print( "  " );  
+  #endif
 
 }
 
 void Hid::PrintVol( float value1 )
 {
-  
+
+  #if LCD_20x4 
   LCD.setCursor( 5 , 3 );
   LCD.print( value1 );
   LCD.print( " mL/min");
+  #else   // En caso de LCD 16x2
+  LCD.setCursor( 3 , 1 );
+  LCD.print( value1 );
+  LCD.print( " mL/min");  
+  #endif
 
 }
 
 void Hid::PrintAlarm( void )
 {
-  
+
+  #if LCD_20x4 
   LCD.setCursor( 11 , 2 );
   LCD.print( "< ALARM >");
+  #else   // En caso de LCD 16x2
+  LCD.setCursor( 9 , 0 );
+  LCD.print( "<ALARM>");  
+  #endif
 
 }
 
