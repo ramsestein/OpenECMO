@@ -34,6 +34,18 @@ El sitema *electrónico* consta de:
 
 ## Diseño actual (en desarollo) ##
 Se han subido los archivos de un diseño 3D para motores nema 23 con ejes de 6,23 y 8mm en la carpeta STL que utiliza para probar rodamientos 608zz y otro modelo de bomba peristáltica llamada LEGO.
+
+Estas son algunas imágenes del modelo LEGO:
+
+
+![Bomba peristáltica LEGO 03](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/bomba peristáltica/LEGO01.jpg "LEGO 01")
+
+
+![Bomba peristáltica LEGO 03](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/bomba peristáltica/LEGO02.jpg "LEGO 02")
+
+
+![Bomba peristáltica LEGO 03](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/bomba peristáltica/LEGO03.jpg "LEGO 03")
+
 Deben utilizarse tubos de 7mm de diámetros exterior y 6mm de diámetro exterior habituales en los hospitales y que se utilizan para diálisis.
 
 ## Como testear el bomba persitaltica
