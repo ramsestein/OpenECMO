@@ -4,7 +4,6 @@
     Peristaltic_pump.h
 
     Fichero de cabecera
-
     Declara las clases y las variables globales
 
  */
@@ -26,17 +25,17 @@
 #define PIN_CURRENT      A0
 
 // Pinout UNO
-#define   CLK_PIN     2       // pin CLK encoderA
-#define   DATA_PIN    3       // pin DATA encoderA
-#define   PIN_ENABLE  4       // pin enable
-#define   PIN_STEP    7       // pin paso 
-#define   PIN_DIR     8       // pin direccion
-#define   SW_ENC     11       // Switch encoder
-#define   SW_REV     12       // Switch encoder
-#define   LED_PIN    13       // the number of Arduino's onboard LED pin
+#define   CLK_PIN     2     // pin CLK encoderA
+#define   DATA_PIN    3     // pin DATA encoderA
+#define   PIN_ENABLE  4     // pin enable
+#define   PIN_STEP    7     // pin paso 
+#define   PIN_DIR     8     // pin direccion
+#define   SW_ENC     11     // Switch encoder
+#define   SW_REV     12     // Switch encoder
+#define   LED_PIN    13     // the number of Arduino's onboard LED pin
 
 // LCD ( LCD 20 x 4 )
-#define   LCD_20x4  1
+#define   LCD_20x4  1       // Poner a 0 para utilizar un LCD 16x2
 #define   I2C_DIR   0x27    // Dir I2C para el LC20x4
 #define   MAXROWS   4       // Numero filas
 #define   MAXCOLS   20      // Numero columnas
