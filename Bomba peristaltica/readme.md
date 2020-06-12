@@ -38,13 +38,13 @@ Se han subido los archivos de un diseño 3D para motores nema 23 con ejes de 6,2
 Estas son algunas imágenes del modelo LEGO:
 
 
-![LEGO01](https://gitlab.com/coronavirusmakers/ecmo/-/blob/master/Bomba%20peristaltica/img/LEGO01.jpg "LEGO01")
+![LEGO01](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/Bomba%20peristaltica/img/LEGO01.jpg "LEGO01")
 
 
-![LEGO02](https://gitlab.com/coronavirusmakers/ecmo/-/blob/master/Bomba%20peristaltica/img/LEGO02.jpg "LEGO02")
+![LEGO02](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/Bomba%20peristaltica/img/LEGO02.jpg "LEGO02")
 
 
-![LEGO03](https://gitlab.com/coronavirusmakers/ecmo/-/blob/master/Bomba%20peristaltica/img/LEGO01.jpg "LEGO03")
+![LEGO03](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/Bomba%20peristaltica/img/LEGO03.jpg "LEGO03")
 
 Deben utilizarse tubos de 7mm de diámetros exterior y 6mm de diámetro exterior habituales en los hospitales y que se utilizan para diálisis.
 
