@@ -2,7 +2,7 @@
 
     Author: Francisco Ochando
     Module: Pump.h
-    Description: Stepper header. Manages pump rotation
+    Description: Pump header. Manages pump rotation
 
  */
 
