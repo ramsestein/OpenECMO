@@ -38,11 +38,11 @@ El diseño usara una jeringa 50-60 ml tipo BD Plastic o similar (diametro 26.7 m
 
 El sitema mecánico consta de:
 * Piezas impresas en 3D
-* Motor paso a paso 
+* Motor paso a paso nema 17
 * Un sistema de husillo / cremallera.. (por concretar)
     * Aquí tenemos un enlace con cálculos al respecto de los husillos: https://docs.google.com/spreadsheets/d/1-_jbQUJL_gpxpd1H1qJIKm36sRTwBJtxHg9JuVWixjs/edit#gid=0   
 * 2 Rodamientos LM8UU
-* 
+* Tornillos M3
 
 ### Electrónica ###
 El sitema electrónico consta de:
