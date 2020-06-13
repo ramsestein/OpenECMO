@@ -32,6 +32,8 @@ El diseño usara una jeringa 50-60 ml tipo BD Plastic o similar (diametro 26.7 m
 
 ## Hardware ##
 
+![Montaje del perfusor](https://gitlab.com/coronavirusmakers/ecmo/-/raw/master/Perfusor/img/perfusor.jpg "Montaje del perfusor")
+
 ### Mecánica ###
 
 El sitema mecánico consta de:
