@@ -40,7 +40,6 @@ El sitema mecánico consta de:
 * Piezas impresas en 3D
 * Motor paso a paso nema 17
 * Un sistema de husillo / cremallera.. (por concretar)
-    * Aquí tenemos un enlace con cálculos al respecto de los husillos: https://docs.google.com/spreadsheets/d/1-_jbQUJL_gpxpd1H1qJIKm36sRTwBJtxHg9JuVWixjs/edit#gid=0   
 * 2 Rodamientos LM8UU
 * Tornillos M3
 
@@ -67,6 +66,11 @@ En la carpeta stl hay unos archivos en formato .stl para la  impresión en 3D de
 
 https://gitlab.com/coronavirusmakers/ecmo/-/tree/master/Perfusor/stl 
 
+En la carpeta stl/Plastikete hay una versión low-cost completamente de plástico
+
+https://gitlab.com/coronavirusmakers/ecmo/-/tree/master/Perfusor/stl/Plastikete 
+
+
 ## Como testear el perfusor
 
 ## Enlaces de interes ##
@@ -75,4 +79,6 @@ https://gitlab.com/coronavirusmakers/ecmo/-/tree/master/Perfusor/stl
 2. https://github.com/gniezen/openpump
 3. https://docs.google.com/document/d/1zW16lL-d0ZAO8lZd7ANE9CllARVIuFvh3bQfag9HGlk/mobilebasic#
 
-### Calculos ###
+### Cálculos ###
+
+    * Aquí tenemos un enlace con cálculos al respecto de los husillos: https://docs.google.com/spreadsheets/d/1-_jbQUJL_gpxpd1H1qJIKm36sRTwBJtxHg9JuVWixjs/edit#gid=0   
