@@ -1,25 +1,20 @@
 /*
-  Author: Waag Society's BioHack Academy Code.
+ 
+  Author: Francisco Ochando
 
-  Modified: Francisco Ochando
-
-  Modification description: Adding modifications. Current sensor.
+  Description: Peristalthic Pump, LCD and buttons. Current sensor.
   
-  Waag Society's BioHack Academy Code is free software: you can 
-  redistribute it and/or modify it under the terms of the GNU 
-  General Public License as published by the Free Software 
-  Foundation, either version 3 of the License, or (at your option) 
-  any later version.
+  This Code is free software: you can redistribute it and/or modify 
+  it under the terms of the GNU General Public License as published 
+  by the Free Software Foundation, either version 3 of the License, 
+  or (at your option) any later version.
   
-  Waag Society's BioHack Academy Code is distributed in the hope 
-  that it will be useful, but WITHOUT ANY WARRANTY; without even 
-  the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-  PARTICULAR PURPOSE.  See the GNU General Public License for more 
-  details.
+  This is distributed in the hope that it will be useful, but WITHOUT 
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public 
+  License for more details.
   
-  You should have received a copy of the GNU General Public License
-  along with Waag Society's BioHack Academy Code. If not, see 
-  <http://www.gnu.org/licenses/>.
+  See <http://www.gnu.org/licenses/>.
 */
 
 /*
@@ -34,10 +29,10 @@ move <speed> Set continuous pump rotation speed (rpm)
 #include "Sensor.h"
 #include "Pump.h"
 
-Peristaltic PERIS;
+Peristaltic BOMBA;
 //AccelStepper Motor(1, PIN_STEP, PIN_DIR);
 FlexyStepper stepper;
-Pump pump;
+Pump MOTOR;
 Sensor sensor;
 
 byte ledstate = LOW; // Blinking indicator LED
@@ -98,27 +93,29 @@ void setup() {
   digitalWrite(LED_PIN, HIGH); // Activa HIGH
   
   // Initialize LCD
-  PERIS.LCD.Setup();
+  BOMBA.LCD.Setup();
   // Time after wellcome banner
   delay(800);
-  PERIS.LCD.Init();
+  BOMBA.LCD.Init();
+  BOMBA.LCD.setDir( fwd );
+  MOTOR.setDir( fwd ); 
   setupStepper();
   Serial.println("Desactivada");
 
 }
 
 void Enable() {
-  if (PERIS.LCD.getButton() == SW_ENC_PULSADO) {
-    ena = !ena;
-    //ena = pump.enabled();
-    // Opcion debugger
-    if (ena) {
-      Serial.println("Activada ");
-    } else {
-      Serial.println("Desactivada ");      
-    }
-    // Fin opcion debugger
+  if (BOMBA.LCD.getButton() == SW_ENC_PULSADO) {
+    ena = true;
+    Serial.println("Desactivada ");      
   }
+}
+
+void Disable() {
+  if (BOMBA.LCD.getButton() == SW_ENC_PULSADO) {
+    ena = false;
+    Serial.println("Desactivada ");
+  }  
 }
 
 
@@ -137,33 +134,27 @@ void loop() {
   static uint16_t state=0, counter=60;
 
   // Comprueba los pulsadores para asignar Dirección y Enable
-  if(PERIS.LCD.getButton() == SW_REV_PULSADO) {
+  if(BOMBA.LCD.getButton() == SW_REV_PULSADO) {
     time = millis();
-    if(time - last_time > 500) {
-      Serial.print(SW_REV_PULSADO); 
+    if(time - last_time > 300) {
+      //Serial.print(SW_REV_PULSADO); 
       if (fwd) {
-        fwd = !fwd;
-        PERIS.LCD.PrintDir( fwd );
+        fwd = false;
+        BOMBA.LCD.setDir( fwd );
+        MOTOR.setDir( fwd ); 
       } else {
-        fwd = !fwd; 
-        PERIS.LCD.PrintDir( fwd );     
-      }  
-      Serial.println (" Cambiada direccion");      
+        fwd = true; 
+        BOMBA.LCD.setDir( fwd );
+        MOTOR.setDir( fwd );     
+      }   
     } 
     last_time = time;   
   }
 
-  if(PERIS.LCD.getButton() == SW_ENC_PULSADO) {
+  if(BOMBA.LCD.getButton() == SW_ENC_PULSADO) {
     time = millis();
-    if(time - last_time > 500) {
-      Serial.println(SW_ENC_PULSADO); 
-      if (ena) {
-        ena = !ena;
-        Serial.println("Desactivada");
-      } else {
-        ena = !ena;
-        Serial.println("Activada");      
-      }        
+    if(time - last_time > 300) {
+      ena = true;
     } 
     last_time = time;   
   }
@@ -179,24 +170,33 @@ void loop() {
 
   
   // Debug. Test de funcionamiento
-  if (ena) { 
-    while(!stepper.motionComplete()) {
+  if (ena) {
+    Serial.println("Activada");
+    while(!stepper.motionComplete() && ena) {
       stepper.processMovement(); // Not blocking
-
+      if(BOMBA.LCD.getButton() == SW_ENC_PULSADO) {
+        time = millis();
+        if(time - last_time > 300) {
+          ena = false;
+          Serial.println("Abortado");
+        } 
+        last_time = time;   
+      }
       if (stepper.getCurrentPositionInSteps() == 400) {
         Serial.println("Ha llegado a 400 pasos ");    
       }
       if (stepper.getCurrentPositionInSteps() == 4000) {
         Serial.println("Final ");    
       }
-    }           
+    }
+    ena = false;          
   }
   // Fin debug, test de funcionamiento
   
 
   // Lee el Encoder
   state = (state<<1) | digitalRead(CLK_PIN) | 0xe000;
-  Rpm = PERIS.LCD.getEncoder( state , counter );
+  Rpm = BOMBA.LCD.getEncoder( state , counter );
   // Fin lee el Encoder
 
 }
