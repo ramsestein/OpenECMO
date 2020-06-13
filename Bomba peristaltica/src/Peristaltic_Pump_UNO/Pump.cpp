@@ -2,7 +2,7 @@
 
     Author: Francisco Ochando
     Module: Pump.cpp
-    Description: Class stepper. Manages pump rotation and liquid volume
+    Description: Class Pump. Manages pump rotation and liquid volume
 
  */
 
@@ -61,10 +61,12 @@ float Pump::getVolume( int rpm ) {
   
 }
 
-void setDir ( bool forward ) {
-  if (forward) {
-    digitalWrite(PIN_STEPPER_DIR, HIGH);   
+void Pump::setDir ( bool ccw ) {
+  if ( ccw ) {
+    digitalWrite(PIN_STEPPER_DIR, HIGH);
+    Serial.println ("Rotacion dcha CW");    
   } else {
-    digitalWrite(PIN_STEPPER_DIR, LOW);   
+    digitalWrite(PIN_STEPPER_DIR, LOW);
+    Serial.println ("Rotacion izda CCW");    
   }
 }
