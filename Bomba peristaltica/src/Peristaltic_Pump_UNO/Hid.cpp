@@ -8,6 +8,9 @@
 #include "Peristaltic_pump.h"
 #include "Pump.h"
 
+//#define SW_REV_PULSADO 1
+//#define SW_ENC_PULSADO 2
+
 // Set the LCD address to 0x27 for a 16 chars and 2 line display
 // LiquidCrystal_I2C lcd(0x27,16,2);
 // Set the LCD address to 0x27 for a 20 chars and 4 line display
@@ -114,7 +117,7 @@ void Hid::PrintAlarm( void )
 
 }
 
-void Hid::PrintDir( bool dir )
+void Hid::setDir( bool dir )
 {
   
   LCD.setCursor( 17 , 0 );
@@ -131,17 +134,17 @@ byte Hid::Lee( void )
   
   //    Switch Inversion giro
   if ( !digitalRead(SW_REV) ) {
-    buton = SW_REV_PULSADO;
+    but = SW_REV_PULSADO;
     pulsado++;
   }
              
   //    Switch Encoder
   if ( !digitalRead(SW_ENC) ) {
-    buton = SW_ENC_PULSADO;  
+    but = SW_ENC_PULSADO;  
     pulsado++;
   }
    
-  return buton;
+  return but;
 }
 
 int Hid::LeeEncoder( int state, int counter ) {
@@ -170,9 +173,9 @@ int Hid::getEncoder( int state, int counter ) {
 byte Hid::getButton()
 {
   byte hid = Lee();
-  if (hid != 0 && pulsado > threshold) 
+  if (hid != 0 && pulsado > threshold)
   {
-    buton = 0;
+    but = 0;
     pulsado = 0;
     return Lee();
   }
