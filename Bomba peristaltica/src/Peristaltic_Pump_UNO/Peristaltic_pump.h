@@ -1,8 +1,7 @@
 /*
     Author: Francisco Ochando
-    
-    Peristaltic_pump.h
-
+   
+    Module: Peristaltic_pump.h
     Fichero de cabecera
     Declara las clases y las variables globales
 
@@ -13,6 +12,7 @@
 #include  <LiquidCrystal_I2C.h>
 #include  <TimerOne.h>
 #include  <SoftwareSerial.h>
+
 
 // Stepper driver (FlexyStepper)
 /*
@@ -75,13 +75,13 @@ class Hid
     void PrintRPM( int value1 );
     void PrintVol( float value1 );
     void PrintAlarm( void );
-    void PrintDir( bool dir );
+    void setDir( bool dir );
     byte getButton( void );
     int getEncoder( int state , int counter);
     
   private:
 
-    byte buton = 0;
+    byte but = 0;
     byte pulsado = 0;
     byte Lee( void );
     int LeeEncoder( int state , int counter );
@@ -98,7 +98,7 @@ class Peristaltic
     class Pantalla:     public Hid {}; // Repasar la implicacion de public Screen{};
     
     class Pantalla      LCD;              // Define el interfaz HiD  ( LCD 4 x 20 ) 
-    //class Pump          PUMP;             // Define la clase bomba  
+    //class Pump          MOTOR;             // Define la clase bomba  
     //class Sensor        SENSOR;           // Define la clase sensor
     
     //    Metodos
