@@ -19,19 +19,16 @@ void Pump::Setup() {
 
 // TODO
 
-bool Pump::Forward() {
-  forward = !forward;
-  return forward;
+bool Pump::dirCW() {
+  return cw;
 }
 
 void Pump::setMotor() {
 
-  digitalWrite(PIN_STEPPER_DIR, forward);
+  digitalWrite(PIN_STEPPER_DIR, cw);
   if (PIN_STEPPER_STEP == LOW) {
     digitalWrite(PIN_STEPPER_STEP, HIGH);  
-  }
-  else
-  {
+  } else {
     digitalWrite(PIN_STEPPER_STEP, LOW);
   }
   
@@ -43,9 +40,21 @@ void Pump::doStep() {
   digitalWrite(PIN_STEPPER_STEP, LOW);  
 }
 
+void Pump::Enable() {
+  enabled_ = true;  
+}
+
+void Pump::Disable() {
+  enabled_ = false;
+}
+
+bool Pump::isEnabled() {
+  return enabled_;
+}
+
 bool Pump::enabled() {
-  enable = !enable;
-  return !enable;
+  enabled_ = !enabled_;
+  return !enabled_;
 }
 
 int CalcMs (int rpms) {
@@ -54,19 +63,30 @@ int CalcMs (int rpms) {
   return calcms;
 }
 
-float Pump::getVolume( int rpm ) {
-
-  caudal = rpm * Radio * Diametro * pi * pi /2;
-  return caudal;
-  
+float Pump::getVol ( int rpm ) {
+  return rpm * Radio * Diametro * pi * pi / 2;
 }
 
 void Pump::setDir ( bool ccw ) {
   if ( ccw ) {
+    cw = true; 
     digitalWrite(PIN_STEPPER_DIR, HIGH);
     Serial.println ("Rotacion dcha CW");    
   } else {
+    cw = false;
     digitalWrite(PIN_STEPPER_DIR, LOW);
     Serial.println ("Rotacion izda CCW");    
   }
+}
+
+void Pump::setRPM( int rpm ) {
+  RPM = rpm;
+}
+
+void Pump::setACEL( int acel ) {
+  ACEL = acel;
+}
+
+float Pump::getRPS( int rpm ) {
+  return rpm/60;
 }
