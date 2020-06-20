@@ -52,11 +52,6 @@ bool Pump::isEnabled() {
   return enabled_;
 }
 
-bool Pump::enabled() {
-  enabled_ = !enabled_;
-  return !enabled_;
-}
-
 int CalcMs (int rpms) {
   int calcms = 0;
   calcms = rpms * 200 / 60;
