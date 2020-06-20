@@ -14,45 +14,41 @@
 #include  <SoftwareSerial.h>
 
 
-// Stepper driver (FlexyStepper)
-/*
-#define PIN_STEPPER_STEP  6
-#define PIN_STEPPER_DIR   7
-#define PIN_STEPPER_EN    8
-*/
-
-// Current Sensor
-#define PIN_CURRENT      A0
-
 // Pinout UNO
 #define   CLK_PIN     2     // pin CLK encoderA
 #define   DATA_PIN    3     // pin DATA encoderA
-#define   PIN_ENABLE  4     // pin enable
 #define   PIN_STEP    7     // pin paso 
 #define   PIN_DIR     8     // pin direccion
-#define   SW_ENC     11     // Switch encoder
-#define   SW_REV     12     // Switch encoder
-#define   LED_PIN    13     // the number of Arduino's onboard LED pin
+#define   PIN_ENABLE  9     // pin enable motor
+#define   PIN_ALR     10    // pin led alarma
+#define   SW_ENC      11    // Switch encoder
+#define   SW_REV      12    // Switch direccion
+#define   PIN_LED     13    // Arduino's onboard LED pin
+#define   PIN_POT     A0    // pin potenciometro
+#define   PIN_CURRENT A1    // pin current sensor
 
 // LCD ( LCD 20 x 4 )
-#define   LCD_20x4  1       // Poner a 0 para utilizar un LCD 16x2
-#define   I2C_DIR   0x27    // Dir I2C para el LC20x4
-#define   MAXROWS   4       // Numero filas
-#define   MAXCOLS   20      // Numero columnas
-#define   INT_I2C   0x27    // Depende del hardware 
+#define   LCD_20x4    1     // Poner a 0 para utilizar un LCD 16x2
+#define   I2C_DIR     0x27  // Dir I2C para el LC20x4
+#define   MAXROWS     4     // Numero filas
+#define   MAXCOLS     20    // Numero columnas
+#define   INT_I2C     0x27  // Depende del hardware 
 
 // Puerto Serie
 #define   BPS1152   115200  // Maxima RS232
 #define   BPS96     9600    // 9600 bps
 
-#define ENABLED       1     // Bomba activada
-#define NOT_ENABLED   0     // Bomba desactivada
+#define   ENABLED   1       // Bomba activada
+#define   DISABLED  0       // Bomba desactivada
 
 // Estado Botones
-#define SW_REV_PULSADO 1
-#define SW_ENC_PULSADO 2
+#define   SW_REV_PULSADO 1
+#define   SW_ENC_PULSADO 2
+#define   ENCODER   0
 
-#define RPM_DEFAULT   60
+// Estado bomba
+#define   RPM_DEFAULT 60
+#define   RPM_MAX     400
 
 
 class Hid
@@ -74,18 +70,27 @@ class Hid
     void Update( byte value1, byte value2 );
     void PrintRPM( int value1 );
     void PrintVol( float value1 );
-    void PrintAlarm( void );
+    void setAlarm( void );
     void setDir( bool dir );
+    void setON( bool on );
+    void ReadButton( void );
+    int ReadPot( int pot , int antpot );
     byte getButton( void );
+    byte getBut( void );
+    bool ButPressed( void );
     int getEncoder( int state , int counter);
+    void setRPM( long valor , int antvalor );
+    int getRPM( void );
+    void Reset( void );
     
   private:
 
     byte but = 0;
-    byte pulsado = 0;
-    byte Lee( void );
+    byte pressed = 0;
+    void Read( void );
     int LeeEncoder( int state , int counter );
-    byte threshold = 150;
+    int rpm = 0;
+    byte trigger = 200;
 
 };
 
@@ -97,12 +102,12 @@ class Peristaltic
     
     class Pantalla:     public Hid {}; // Repasar la implicacion de public Screen{};
     
-    class Pantalla      LCD;              // Define el interfaz HiD  ( LCD 4 x 20 ) 
-    //class Pump          MOTOR;             // Define la clase bomba  
-    //class Sensor        SENSOR;           // Define la clase sensor
+    class Pantalla      LCD;           // Define el interfaz HiD  ( LCD 4 x 20 ) 
+    //class Pump          MOTOR;         // Define la clase bomba  
+    //class Sensor        SENSOR;        // Define la clase sensor
     
     //    Metodos
-    void Setup();                         // Inicia el hardware y abre puerto serie
+    void Setup();                      // Inicia el hardware y abre puerto serie
 
   private:
 
