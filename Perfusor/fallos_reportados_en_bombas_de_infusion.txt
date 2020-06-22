@@ -1,0 +1,76 @@
+		Ejemplos de problemas reportados de bombas de infusión
+
+-Problemas de software
+-Errores de alarma
+-Diseño inadecuado de la interfaz de usuario (problemas de "factores humanos")
+-Componentes rotos
+-Fallas de la batería Incendios, chispas, carbonización o descargas
+
+-	Problemas de software: 
+Aparece un mensaje de error de software que indica que la bomba no funciona. Esto ocurre en ausencia de un problema identificable.
+
+La bomba de infusión interpreta una sola pulsación de tecla como múltiples pulsaciones (un problema llamado "rebote de tecla").
+Por ejemplo, el usuario programa una velocidad de infusión de 10 mL/hora, pero el dispositivo registra una velocidad de infusión de 100 mL/hora.
+
+-	Errores de alarma: 
+La bomba de infusión no genera una alarma audible para un problema crítico, como una oclusión (por ejemplo, un tubo pinzado) o la presencia de aire en el tubo de infusión.
+
+La bomba de infusión genera una alarma de oclusión en ausencia de una oclusión.
+
+-	Diseño inadecuado de la interfaz de usuario (problemas de "factores humanos"):
+
+El diseño de la pantalla de la bomba de infusión confunde al usuario, o la bomba de infusión no responde como debería (es decir, con una advertencia o alarma) cuando se introducen datos inadecuados.
+
+La pantalla de la bomba de infusión no aclara qué unidades de medida se espera que introduzca el usuario. Por ejemplo, el usuario puede introducir el peso en libras cuando la bomba de infusión lo requiera en kilogramos.
+
+Las etiquetas o los componentes de la bomba se dañan con el uso rutinario. Por ejemplo, la limpieza de la bomba, tal como el usuario-mantenedor cree que es una práctica aceptable, puede dañar la bomba, haciéndola poco fiable para el uso clínico.
+Los usuarios con uñas largas pueden dañar la impresión de las teclas de la bomba, haciéndolas ilegibles. 
+
+Las instrucciones de uso o las indicaciones para la configuración mecánica no son lo suficientemente específicas o claras.
+Por ejemplo, una instrucción para colocar un juego de tubos en todos los soportes de tubos requeridos antes de cerrar la puerta de acceso de la bomba puede ser poco clara, lo que puede dar lugar a tubos pinzados y a una subinfusión. 
+
+Las funciones y ajustes de alarma mal diseñados hacen que los usuarios pasen por alto los problemas o respondan tarde. 
+Por ejemplo, es posible que una alarma que indica una carga baja de la batería no se muestre a tiempo para que el usuario pueda evitar que la bomba se apague durante una infusión crítica mientras el paciente está en transporte. 
+Las falsas alarmas ("molestas") pueden disminuir la sensibilidad de los usuarios a todas las alarmas. 
+
+El diseño de la pantalla de la bomba de infusión es torpe o confuso para los usuarios, lo que causa un retraso en la terapia. 
+Por ejemplo, la tecla "Iniciar infusión" puede estar ubicada junto a la tecla "Encender", y el usuario puede apagar la bomba de infusión en lugar de iniciar la infusión. En algunos casos, los ajustes programados se pierden cuando el usuario apaga la bomba, y los ajustes de infusión tienen que volver a introducirse después de que la bomba se reinicie. 
+
+Las advertencias se muestran con tanta frecuencia que los usuarios llegan a ignorarlas (similares a las "alarmas molestas"), no son lo suficientemente detalladas como para evitar el uso indebido, o representan valores en formas que no son familiares para el usuario. 
+
+Los mensajes de advertencia no son claros. 
+
+Los manuales de usuario son confusos, inadecuados, obsoletos o no están disponibles. Esto es particularmente preocupante para los usuarios en el hogar.
+Cuando se comunican los aspectos críticos del estado de funcionamiento de la bomba, el sistema no utiliza un lenguaje sencillo o no ofrece suficiente información para guiar a los usuarios a través de las acciones apropiadas.
+
+-		Componentes rotos:
+
+Gráficos: Las grietas entre los botones de funcionamiento permiten que el agua entre en el interior.
+
+La bomba de infusión puede haberse caído o dañado durante el uso, lo que puede dar lugar a una sobreinfusión   o a una subinfusión, si la bomba sigue utilizándose sin ser reparada. 
+
+La carcasa de plástico de una bomba de insulina, aunque se promociona como impermeable, es propensa a agrietarse, lo que permite que el agua entre en la carcasa y provoque el mal funcionamiento de la bomba.
+
+
+
+Colocación inadecuada del juego de tubos.Tubos fuera de la alineación. El golpe en la puerta se enganchará en la brida inferior del conjunto de tubos en lugar de encajar entre las bridas inferior y superior como se pretendía.
+
+
+Daños en la batería de plomo-ácido sellados causados por sobrecarga.
+
+-		Fallas de la batería:
+
+Un problema de diseño causa el sobrecalentamiento de la batería y lleva a un fallo prematuro de la misma.
+La bomba de infusión da la alarma con un mensaje de batería baja, pero el volumen del altavoz está demasiado bajo, y la alarma pasa desapercibida.
+La bomba de infusión se apaga cuando se agota la batería. La batería no se reemplaza durante el mantenimiento rutinario recomendado para el final de la vida útil.
+
+
+-		Fuego, chispas, carbonización o choques:
+
+El usuario enchufa o desenchufa el dispositivo de una toma de corriente y recibe una descarga, y/o se ven chispas. 
+
+Se observa un olor a quemado o llamas en la bomba de infusión.
+
+Carbonización y fusión de los conectores que fallaron después de un incendio que ocurrió cuando los módulos de la bomba se conectaron a una unidad en funcionamiento.
+
+
